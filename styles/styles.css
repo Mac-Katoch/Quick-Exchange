@@ -251,8 +251,8 @@ img {
 }
 
 .wrapper {
-  width: 85%;
-  max-width: 1200px;
+  width: 90%;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -287,7 +287,7 @@ main {
   height: 100vh;
 }
 
-main .mainDisplay {
+.mainDisplay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -297,8 +297,52 @@ main .mainDisplay {
       -ms-flex-align: center;
           align-items: center;
   height: 70%;
+  width: 100%;
 }
 
-main .mainDisplay div {
-  width: 50%;
+.mainDisplay form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 70%;
+  width: 47%;
+  border: green solid 2px;
+}
+
+.mainDisplay form * {
+  margin: 5px;
+}
+
+.mainDisplay form h2 {
+  font-size: calc(1rem + 0.7vw);
+}
+
+.mainDisplay form .dollarValue {
+  color: rgba(128, 128, 128, 0.6);
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.mainDisplay form p.results {
+  background: white;
+  outline: 1px rgba(168, 168, 168, 0.6) solid;
+  padding: 1% 12%;
+}
+
+.mainDisplay .buy {
+  background: #45ec45;
+}
+
+.mainDisplay .sell {
+  background: #fc9b2c;
 }

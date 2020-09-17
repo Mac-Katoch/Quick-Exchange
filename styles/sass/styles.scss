@@ -7,13 +7,43 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    .mainDisplay {
+}
+
+.mainDisplay {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    form {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         height: 70%;
-        div {
-            width: 50%;
+        width: 47%;
+        border: green solid 2px;
+        * {
+            margin: 5px;
         }
+        h2 {
+            font-size: calc(1rem + 0.7vw);
+        }
+        .dollarValue {
+            color: rgba(128, 128, 128, 0.6);
+            font-style: italic;
+            text-transform: capitalize;
+        }
+        p.results {
+            background: white;
+            outline: 1px rgba(168, 168, 168, 0.6) solid;
+            padding: 1% 12%;
+        }
+    }
+    .buy {
+        background: rgb(69, 236, 69);
+    }
+    .sell {
+        background: rgb(252, 155, 44);
     }
 }
