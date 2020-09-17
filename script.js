@@ -12,6 +12,31 @@ quickExg.getInput = () => {
 	});
 };
 
+quickExg.populateOptions = () => {
+	$.ajax({
+		url: quickExg.apiList,
+		method: 'GET',
+		dataType: 'JSON',
+		data: {
+			access_key: quickExg.apiKey,
+		},
+	}).then((data) => {
+		// console.log(data.fiat);
+		const newArray = Object.keys(data.fiat);
+		console.log(newArray);
+		quickExg.dropDownMenu(newArray);
+	});
+};
+
+quickExg.dropDownMenu = (currencyArray) => {
+	currencyArray.forEach((currency) => {
+		const result = $(`<option value='${currency}'>`).text(currency);
+		$('#userCurrency').append(result);
+	});
+};
+
+// $('')
+
 // const userInput = quickExg.getInput();
 // console.log(userInput);
 
@@ -35,6 +60,11 @@ quickExg.listData = (input) => {
 
 // quickExg.listData('USD');
 
-$(function () {
+quickExg.init = () => {
 	quickExg.getInput();
+	quickExg.populateOptions();
+};
+
+$(function () {
+	quickExg.init();
 });
