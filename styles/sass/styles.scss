@@ -1,8 +1,19 @@
 @import "setup.scss";
 
-.mainDisplay {
+
+main {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     height: 100vh;
+    .mainDisplay {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 70%;
+        div {
+            width: 50%;
+        }
+    }
 }
