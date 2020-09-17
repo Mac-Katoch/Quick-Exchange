@@ -23,18 +23,28 @@ quickExg.populateOptions = () => {
 			access_key: quickExg.apiKey,
 		},
 	}).then((data) => {
-		// console.log(data.fiat);
 		const fiatArray = Object.keys(data.fiat);
-		// console.log(fiatArray);
 
+		// this is where we want to push smaller objects??
 		const cryptoArray = [];
 
-		for (let curr in data.crypto) {
-			console.log(curr.name_full);
-			// let symbol = curr.symbol;
+		//saves the whole crypto (internal object)
+		const currencies = data.crypto;
+		for (let curr in currencies) {
+			// this gets us the individual currency objects
+			const item = currencies[curr];
+			// saves the name of each individual currency
+			const name = item.name;
+			// saves the symbol of each individual currency
+			const symbol = item.symbol;
+
+			console.log(name);
+			console.log(symbol);
+			
+			cryptoArray.push(item);
 		}
-		console.log(data);
 		quickExg.dropDownMenu(fiatArray);
+		console.log(cryptoArray);
 	});
 };
 
@@ -54,7 +64,7 @@ quickExg.dropDownMenu = (currencyArray) => {
 //retreiving all data from API 
 quickExg.listData = (input) => {
 	$.ajax({
-		url: quickExg.apiLive,
+		url: quickExg.apiList,
 		method: 'GET',
 		dataType: 'JSON',
 		data: {
