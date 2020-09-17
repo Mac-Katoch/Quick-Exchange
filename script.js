@@ -4,14 +4,16 @@ quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
 
+//getting "selection" from user to determine which currency string to use
 quickExg.getInput = () => {
-	$('#userCurrency').on('change', function () {
+	$('.dropDown').on('change', function () {
 		const selection = $(this).val();
 		console.log(selection);
 		quickExg.listData(selection);
 	});
 };
 
+//getting all currency objects and making an array out of the symbols
 quickExg.populateOptions = () => {
 	$.ajax({
 		url: quickExg.apiList,
@@ -22,26 +24,34 @@ quickExg.populateOptions = () => {
 		},
 	}).then((data) => {
 		// console.log(data.fiat);
-		const newArray = Object.keys(data.fiat);
-		console.log(newArray);
-		quickExg.dropDownMenu(newArray);
+		const fiatArray = Object.keys(data.fiat);
+		// console.log(fiatArray);
+
+		const cryptoArray = [];
+
+		for (let curr in data.crypto) {
+			console.log(curr.name_full);
+			// let symbol = curr.symbol;
+		}
+		console.log(data);
+		quickExg.dropDownMenu(fiatArray);
 	});
 };
 
+//populate dropdown with symbols from populateOptions
 quickExg.dropDownMenu = (currencyArray) => {
 	currencyArray.forEach((currency) => {
 		const result = $(`<option value='${currency}'>`).text(currency);
-		$('#userCurrency').append(result);
+		$('.dropDown').append(result);
 	});
 };
-
-// $('')
-
 // const userInput = quickExg.getInput();
 // console.log(userInput);
 
 // quickExg.displayInput;
 
+
+//retreiving all data from API 
 quickExg.listData = (input) => {
 	$.ajax({
 		url: quickExg.apiLive,
@@ -58,13 +68,13 @@ quickExg.listData = (input) => {
 	});
 };
 
-// quickExg.listData('USD');
-
+//INIT FUNCTION
 quickExg.init = () => {
 	quickExg.getInput();
 	quickExg.populateOptions();
 };
 
+//DOCUMENT READY FUNCTION
 $(function () {
 	quickExg.init();
 });
