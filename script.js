@@ -23,28 +23,26 @@ quickExg.populateOptions = () => {
 			access_key: quickExg.apiKey,
 		},
 	}).then((data) => {
-		const fiatArray = Object.keys(data.fiat);
 
-		// this is where we want to push smaller objects??
-		const cryptoArray = [];
-
-		//saves the whole crypto (internal object)
-		const currencies = data.crypto;
-		for (let curr in currencies) {
-			// this gets us the individual currency objects
-			const item = currencies[curr];
-			// saves the name of each individual currency
-			const name = item.name;
-			// saves the symbol of each individual currency
-			const symbol = item.symbol;
-
-			console.log(name);
-			console.log(symbol);
-			
-			cryptoArray.push(item);
+		const fiatCurrencies = data.fiat;
+		const fiatDisplay = [];
+		for (const key in fiatCurrencies) {
+			fiatDisplay.push(`${fiatCurrencies[key]} (${key})`);
 		}
-		quickExg.dropDownMenu(fiatArray);
-		console.log(cryptoArray);
+
+		const cryptoCurrencies = data.crypto;
+		const cryptoDisplay = [];
+		for (let key in cryptoCurrencies) {
+			// this gets us the individual currency objects
+			const item = cryptoCurrencies[key];
+			const fullName = item.name_full;
+
+			cryptoDisplay.push(fullName);
+		}
+
+		const masterDisplay = fiatDisplay.concat(cryptoDisplay);
+		quickExg.dropDownMenu(masterDisplay);
+		
 	});
 };
 
