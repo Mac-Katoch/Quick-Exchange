@@ -271,8 +271,8 @@ a {
 }
 
 body {
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #cccccc), to(#4d4b4b));
-  background-image: linear-gradient(90deg, #cccccc 50%, #4d4b4b 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffedc6), to(#6b624e));
+  background-image: linear-gradient(180deg, #ffedc6 50%, #6b624e 100%);
 }
 
 main {
@@ -294,6 +294,7 @@ main {
 
 main h1 {
   font-size: calc(5rem + 4vw);
+  text-shadow: #494924 2px 2px 5px;
   margin: 0;
   z-index: 999;
 }
@@ -326,8 +327,9 @@ main h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 10px 10px 30px rgba(102, 102, 102, 0.7), -10px -10px 30px #ffffff;
-          box-shadow: 10px 10px 30px rgba(102, 102, 102, 0.7), -10px -10px 30px #ffffff;
+  border: 1px #fff0d3 solid;
+  -webkit-box-shadow: 10px 10px 40px #807660, -10px -10px 40px #faf3e3;
+          box-shadow: 10px 10px 40px #807660, -10px -10px 40px #faf3e3;
   height: 70%;
   width: 47%;
   border-radius: 8px;
@@ -370,15 +372,15 @@ main h1 {
 }
 
 .mainDisplay .sell {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(206, 190, 155, 0.52)), to(rgba(33, 31, 58, 0.61))), url("../assets/fiat.jpg");
-  background-image: linear-gradient(to bottom, rgba(206, 190, 155, 0.52), rgba(33, 31, 58, 0.61)), url("../assets/fiat.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(226, 208, 168, 0.699)), to(rgba(33, 31, 58, 0.712))), url("../assets/fiat.jpg");
+  background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.699), rgba(33, 31, 58, 0.712)), url("../assets/fiat.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .mainDisplay .buy {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 209, 214, 0.52)), to(rgba(34, 25, 109, 0.61))), url("../assets/crypto.jpg");
-  background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.52), rgba(34, 25, 109, 0.61)), url("../assets/crypto.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 209, 214, 0.726)), to(rgba(33, 25, 109, 0.678))), url("../assets/crypto.jpg");
+  background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.726), rgba(33, 25, 109, 0.678)), url("../assets/crypto.jpg");
   background-size: cover;
   background-position: center;
 }

@@ -1,11 +1,12 @@
 @import "setup.scss";
 
 body {
-    background-image: linear-gradient(90deg, rgb(204, 204, 204) 50%, rgb(77, 75, 75) 100%);
+    background-image: linear-gradient(180deg, rgb(255, 237, 198) 50%, rgb(107, 98, 78) 100%);
 }
 main {
     h1 {
         font-size: calc(5rem + 4vw);
+        text-shadow: rgb(73, 73, 36) 2px 2px 5px;
         margin: 0;
         z-index: 999;
     }
@@ -28,7 +29,8 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        box-shadow: 10px 10px 30px rgba(102, 102, 102, 0.7), -10px -10px 30px #ffffff;
+        border: 1px rgb(255, 240, 211) solid;
+        box-shadow: 10px 10px 40px rgb(128, 118, 96), -10px -10px 40px rgb(250, 243, 227);
         height: 70%;
         width: 47%;
         border-radius: 8px;
@@ -65,12 +67,12 @@ main {
         }
     }
     .sell {
-        background-image: linear-gradient(to bottom, rgba(206, 190, 155, 0.52), rgba(33, 31, 58, 0.61)), url('../assets/fiat.jpg');
+        background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.699), rgba(33, 31, 58, 0.712)), url('../assets/fiat.jpg');
         background-size: cover;
         background-position: center;
     }
     .buy {
-        background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.52), rgba(34, 25, 109, 0.61)), url('../assets/crypto.jpg');
+        background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.726), rgba(33, 25, 109, 0.678)), url('../assets/crypto.jpg');
         background-size: cover;
         background-position: center;
     }
