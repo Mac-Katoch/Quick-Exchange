@@ -1,5 +1,7 @@
 const quickExg = {};
 
+let globalCrypto = [];
+
 quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
@@ -23,8 +25,8 @@ quickExg.populateOptions = () => {
 			access_key: quickExg.apiKey,
 		},
 	}).then((data) => {
-
 		const fiatCurrencies = data.fiat;
+		globalFiat = fiatCurrencies;
 		const fiatDisplay = [];
 		for (const key in fiatCurrencies) {
 			fiatDisplay.push(`${fiatCurrencies[key]} (${key})`);
@@ -42,7 +44,6 @@ quickExg.populateOptions = () => {
 
 		const masterDisplay = fiatDisplay.concat(cryptoDisplay);
 		quickExg.dropDownMenu(masterDisplay);
-		
 	});
 };
 
@@ -58,8 +59,7 @@ quickExg.dropDownMenu = (currencyArray) => {
 
 // quickExg.displayInput;
 
-
-//retreiving all data from API 
+//retreiving all data from API
 quickExg.listData = (input) => {
 	$.ajax({
 		url: quickExg.apiList,
@@ -76,13 +76,53 @@ quickExg.listData = (input) => {
 	});
 };
 
+// Creating function to calculate from user input to api output
+// quickExg.calc() = () => {};
+quickExg.ratesData = (targetFiat) => {
+	$.ajax({
+		url: quickExg.apiLive,
+		method: 'GET',
+		dataType: 'JSON',
+		data: {
+			access_key: quickExg.apiKey,
+			target: targetFiat,
+		},
+	}).then((data) => {
+		console.log(data);
+	});
+};
+
+// Creating function to get input from user and display converted amount
+quickExg.displayAmt = () => {
+	$('.sell').on('submit', function (e) {
+		e.preventDefault();
+		// $('.dollarBuy').attr('value', $('.dollarSell').val());
+		const sellValue = $('.dollarSell').val();
+	});
+};
+
 //INIT FUNCTION
 quickExg.init = () => {
 	quickExg.getInput();
 	quickExg.populateOptions();
+	quickExg.displayAmt();
+	quickExg.ratesData('GBP');
 };
 
 //DOCUMENT READY FUNCTION
 $(function () {
 	quickExg.init();
 });
+
+/*
+// NATIONAL CURR -> CRYPTO
+// Ajax call with target being the national curr
+// Locate crypto curr in the object
+// Multiply the rate with user entered quantity
+
+// CRYPTO -> CRYPTO
+// Ajax call with default live (USD)
+// Locate both crypto objects and identify rates
+// Multiply or divide the rates to get the crypto to crypto rate <---EXTRA STEP
+// We multiply calculated crypto rate with user entered quantity
+*/
