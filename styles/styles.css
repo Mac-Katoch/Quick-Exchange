@@ -420,6 +420,12 @@ main h1 {
   border-radius: 8px;
 }
 
+.mainDisplay form select {
+  outline: none;
+  border: 1px solid wheat;
+  padding: 2px 0;
+}
+
 .mainDisplay form .dollarValue {
   color: rgba(128, 128, 128, 0.6);
   font-style: italic;
@@ -436,11 +442,25 @@ main h1 {
   text-shadow: black 2px 2px 5px;
 }
 
-.mainDisplay form p.results {
+.mainDisplay form button.submitBtn {
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.mainDisplay form button.submitBtn:focus, .mainDisplay form button.submitBtn:hover {
+  background: wheat;
+  color: black;
+}
+
+.mainDisplay form p.results,
+.mainDisplay form button.submitBtn {
   background: black;
   color: white;
   outline: 2px wheat solid;
   padding: 1% 12%;
+  border: none;
+  font-size: 2rem;
 }
 
 .mainDisplay .sell {

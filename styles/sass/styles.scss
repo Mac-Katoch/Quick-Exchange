@@ -50,6 +50,11 @@ main {
             border: 1px solid rgba(128, 128, 128, 0.6);
             border-radius: 8px;
         }
+        select {
+            outline: none;
+            border: 1px solid wheat;
+            padding: 2px 0; 
+        }
         .dollarValue {
             color: rgba(128, 128, 128, 0.6);
             font-style: italic;
@@ -64,11 +69,23 @@ main {
             color: white;
             text-shadow: black 2px 2px 5px;
         }
-        p.results {
+        button.submitBtn {
+            cursor: pointer;
+            transition: all 0.4s;
+            &:focus,
+            &:hover {
+                background: wheat;
+                color: black;
+            }
+        }
+        p.results,
+        button.submitBtn {
             background: black;
             color: white;
             outline: 2px wheat solid;
             padding: 1% 12%;
+            border: none;
+            font-size: 2rem;
         }
     }
     .sell {

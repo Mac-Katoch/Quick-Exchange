@@ -4,41 +4,49 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quick Exchange</title>
+		<!-- link css -->
 		<link rel="stylesheet" href="./styles/styles.css" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,400&family=Poppins:wght@100;300;400;600&display=swap"
-			rel="stylesheet">
+		<!-- link fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,400&family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
+		<!-- link favicon -->
+		<link type="image/ico" href="./favicon_io/favicon.ico" rel="icon">
+		<!-- link icons -->
+		<script src="https://kit.fontawesome.com/4fba6b96fc.js" crossorigin="anonymous"></script>
 	</head>
 
 	<body>
 
-		<div class="modalContainer">
+		<!-- <div class="modalContainer">
 			<div class="modalCenter">
 				<p>the fastest way to see what you've got, and better yet...</p>
 				<p>what you <i>could</i> have</p>
 				<button class="start">Start</button>
 			</div>
-		</div>
+		</div> -->
 
 		<main class="wrapper">
 			<h1>Quick Exg</h1>
 			<div class="mainDisplay mainContent">
 				<form class="sell" action="">
 					<label for="sellCurrency">Currency You're Selling:</label>
-					<select class="dropDown" name="sellCurrency" id="sellCurrency">
-						<option value="CAD">CAD</option>
-					</select>
+					<div class="selectDiv">
+						<select class="dropDown" name="sellCurrency" id="sellCurrency">
+							<option value="CAD">CAD</option>
+						</select>
+					</div>
 					<input class="dollarValue dollarSell" type="text" value="" placeholder="Enter Exact Amount"></input>
 					<h2>Ready?</h2>
-					<button type="submit">Convert</button>
+					<button class="submitBtn" type="submit">Convert</button>
 					<!-- Exchange -->
 				</form>
 
 				<form class="buy" action="submit">
 					<label for="buyCurrency">Currency You're Buying:</label>
-					<select class="dropDown" name="buyCurrency" id="buyCurrency">
-						<option value="CAD">CAD</option>
-					</select>
+					<div class="selectDiv">
+						<select class="dropDown" name="buyCurrency" id="buyCurrency">
+							<option value="CAD">CAD</option>
+						</select>
+						</div>
 					<input class="dollarValue dollarBuy" type="text" placeholder="Converted value" disabled></input>
 
 					<h2>Result:</h2>
