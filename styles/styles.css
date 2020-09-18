@@ -242,6 +242,8 @@ html {
 body {
   font-size: 1.6rem;
   font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow-y: hidden;
 }
 
 img {
@@ -270,9 +272,73 @@ a {
   text-decoration: none;
 }
 
+.modalContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.877)), to(rgba(61, 61, 65, 0.822))), url("../assets/pexels-pixabay-128878.jpg");
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.877), rgba(61, 61, 65, 0.822)), url("../assets/pexels-pixabay-128878.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalContainer .modalCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 25%;
+  height: 100%;
+  width: 50%;
+  font-weight: 600;
+  text-align: center;
+  line-height: 170%;
+  font-size: calc(1.5rem + 0.7vw);
+}
+
+.modalContainer .modalCenter .start {
+  background: black;
+  color: white;
+  padding: 2% 8%;
+  margin: 20px;
+  border: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+.modalContainer .modalCenter .start:hover, .modalContainer .modalCenter .start:focus {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+/* Portrait tablet and small desktops */
+/* Landscape phone to portrait tablet */
+/* Landscape phones and down */
 body {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffedc6), to(#6b624e));
-  background-image: linear-gradient(180deg, #ffedc6 50%, #6b624e 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fff0d3), to(#6b624e));
+  background-image: linear-gradient(180deg, #fff0d3 50%, #6b624e 100%);
+  position: relative;
 }
 
 main {
@@ -310,7 +376,7 @@ main h1 {
           align-items: center;
   height: 70%;
   width: 100%;
-  border-top: 8px double #3f5761;
+  border-top: 8px double #9e855b;
 }
 
 .mainDisplay form {

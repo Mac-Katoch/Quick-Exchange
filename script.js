@@ -6,6 +6,15 @@ quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
 
+
+// when user clicks start on modal, fade out
+quickExg.addStartButton = function () {
+	$('.start').on('click', function () {
+		$('.modalContainer').fadeOut('800');
+		// $('body').css('overflow-y', 'auto');
+	})
+}
+
 //getting "selection" from user to determine which currency string to use
 quickExg.getInput = () => {
 	$('.dropDown').on('change', function () {
@@ -103,10 +112,11 @@ quickExg.displayAmt = () => {
 
 //INIT FUNCTION
 quickExg.init = () => {
+	quickExg.addStartButton();
 	quickExg.getInput();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
-	quickExg.ratesData('GBP');
+	quickExg.ratesData();
 };
 
 //DOCUMENT READY FUNCTION
