@@ -1,6 +1,6 @@
 /* Portrait tablet and small desktops */
 @media (max-width: 950px) {
-    main {
+    body {
         height: 200vh;
         .mainDisplay {
             flex-direction: column;
@@ -12,7 +12,8 @@
             }
         }
     }
-    
+}
+
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {

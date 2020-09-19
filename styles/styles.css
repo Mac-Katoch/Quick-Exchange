@@ -340,17 +340,17 @@ a {
 
 /* Portrait tablet and small desktops */
 @media (max-width: 950px) {
-  main {
+  body {
     height: 200vh;
   }
-  .mainDisplay {
+  body .mainDisplay {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .mainDisplay form.sell,
-  .mainDisplay form.buy {
+  body .mainDisplay form.sell,
+  body .mainDisplay form.buy {
     width: 100%;
     margin: 10px auto;
     padding: 20px 0;
@@ -483,15 +483,15 @@ main h1 {
 }
 
 .mainDisplay .sell {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(226, 208, 168, 0.699)), to(rgba(33, 31, 58, 0.712))), url("../assets/fiat.jpg");
-  background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.699), rgba(33, 31, 58, 0.712)), url("../assets/fiat.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(226, 208, 168, 0.904)), to(rgba(33, 31, 58, 0.795))), url("../assets/fiat.jpg");
+  background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.904), rgba(33, 31, 58, 0.795)), url("../assets/fiat.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .mainDisplay .buy {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 209, 214, 0.726)), to(rgba(33, 25, 109, 0.678))), url("../assets/crypto.jpg");
-  background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.726), rgba(33, 25, 109, 0.678)), url("../assets/crypto.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 209, 214, 0.815)), to(rgba(33, 25, 109, 0.774))), url("../assets/crypto.jpg");
+  background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.815), rgba(33, 25, 109, 0.774)), url("../assets/crypto.jpg");
   background-size: cover;
   background-position: center;
 }
