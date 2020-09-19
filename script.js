@@ -11,6 +11,9 @@ quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
 
+// these solved the issue of the modal loading slowly
+quickExg.start = $('.start');
+quickExg.modal = $('.modalContainer');
 quickExg.sell = $('.sell');
 quickExg.dollarSell = $('.dollarSell');
 quickExg.dropDown = $('.dropDown');
@@ -18,8 +21,8 @@ quickExg.dropDown = $('.dropDown');
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
-	$('.start').on('click', function () {
-		$('.modalContainer').fadeOut('800');
+	this.start.on('click', function () {
+		quickExg.modal.fadeOut('800');
 	});
 };
 
@@ -41,7 +44,7 @@ quickExg.symbolConverter = function (input) {
 
 //getting "selection" from user to determine which currency string to use
 quickExg.getInput = () => {
-	//TODO another cache?? this??
+	//TODO another cache?? why cant we use 'this'??
 	quickExg.dropDown.on('change', function () {
 		// the selction variable holds that string val
 		const selection = $(this).val();
