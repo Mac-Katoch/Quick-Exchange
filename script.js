@@ -4,21 +4,35 @@ let globalCrypto = [];
 // could hold objects with {symbol: and rate:}
 
 // holds objects of name, symbol
-const symbol = [];
-console.log(symbol);
-
+quickExg.symbol = [];
+// console.log(symbol);
 
 quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
 
-
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
 	$('.start').on('click', function () {
 		$('.modalContainer').fadeOut('800');
-	})
-}
+	});
+};
+
+// get symbols for fiat and crypto
+quickExg.symbolConverter = function (input) {
+	let currentSymbol = '';
+	// look at each ref(element) in symbol
+	quickExg.symbol.forEach((element) => {
+		if (input === element.name) {
+			// use this symbol to get rates
+			// if fiat, use for target(tg)
+			// if crypto, use as reference towards third party fiat tg
+			currentSymbol = element.symbol;
+		}
+		// console.log(currentSymbol);
+	});
+	return currentSymbol;
+};
 
 //getting "selection" from user to determine which currency string to use
 quickExg.getInput = () => {
@@ -27,27 +41,10 @@ quickExg.getInput = () => {
 		// the selction variable holds that string val
 		const selection = $(this).val();
 		// pass that selection var into the listData
-		quickExg.symbolConverter(selection);
+		const testing = quickExg.symbolConverter(selection);
+		console.log(testing);
 	});
 };
-
-// get symbols for fiat and crypto
-quickExg.symbolConverter = (input) => {
-	let currentValue = 0;
-	// look at each ref(element) in symbol
-	symbol.forEach((element) => {
-		if (input == element.name) {
-			// use this symbol to get rates
-			// if fiat, use for target(tg)
-			// if crypto, use as reference towards third party fiat tg
-			currentValue = element.symbol;
-		}
-	})
-	return currentValue;
-
-};
-const returnValue = quickExg.symbolConverter();
-console.log(returnValue);
 
 // $.ajax({
 // 	url: quickExg.apiList,
@@ -58,9 +55,8 @@ console.log(returnValue);
 // 		target: input,
 // 	},
 // }).then((data) => {
-// 	// 
+// 	//
 // });
-
 
 //getting all currency objects and making an array out of the symbols
 quickExg.populateOptions = () => {
@@ -75,7 +71,7 @@ quickExg.populateOptions = () => {
 		// FIAT
 		const fiatCurrencies = data.fiat;
 		globalFiat = fiatCurrencies;
-		
+
 		// holds fiat fullNames
 		const fiatDisplay = [];
 
@@ -87,8 +83,8 @@ quickExg.populateOptions = () => {
 			const refFiat = {
 				name: fiatFullName,
 				symbol: fiatSymbol,
-			}
-			symbol.push(refFiat);
+			};
+			quickExg.symbol.push(refFiat);
 		}
 
 		// CRYPTO
@@ -104,8 +100,8 @@ quickExg.populateOptions = () => {
 			const refCrypto = {
 				name: fullName,
 				symbol: item.symbol,
-			}
-			symbol.push(refCrypto);
+			};
+			quickExg.symbol.push(refCrypto);
 			cryptoDisplay.push(fullName);
 		}
 
@@ -145,7 +141,7 @@ quickExg.ratesData = (targetFiat, symbol) => {
 
 // Creating function to get input from user and display converted amount
 quickExg.displayAmt = () => {
-	$('.sell').on('submit', function (e) {
+	$('#sell').on('submit', function (e) {
 		e.preventDefault();
 		// $('.dollarBuy').attr('value', $('.dollarSell').val());
 		const sellValue = $('.dollarSell').val();
@@ -156,7 +152,7 @@ quickExg.displayAmt = () => {
 quickExg.init = () => {
 	quickExg.addStartButton();
 	quickExg.getInput();
-	quickExg.symbolConverter();
+	// quickExg.symbolConverter();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.ratesData();
@@ -166,6 +162,8 @@ quickExg.init = () => {
 $(function () {
 	quickExg.init();
 });
+
+// JQUERY CACHING *****
 
 /*
 // NATIONAL CURR -> CRYPTO
