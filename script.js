@@ -5,6 +5,8 @@ let globalCrypto = [];
 
 // holds objects of name, symbol
 const symbol = [];
+console.log(symbol);
+
 
 quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
@@ -29,16 +31,23 @@ quickExg.getInput = () => {
 	});
 };
 
-// `````````````````THIS PARAM IS THE SELECTION
+// get symbols for fiat and crypto
 quickExg.symbolConverter = (input) => {
-	// symbol is array. element is ref.
+	let currentValue = 0;
+	// look at each ref(element) in symbol
 	symbol.forEach((element) => {
-		if (input === element.name) {
-			console.log(element.symbol);
+		if (input == element.name) {
+			// use this symbol to get rates
+			// if fiat, use for target(tg)
+			// if crypto, use as reference towards third party fiat tg
+			currentValue = element.symbol;
 		}
 	})
-};
+	return currentValue;
 
+};
+const returnValue = quickExg.symbolConverter();
+console.log(returnValue);
 
 // $.ajax({
 // 	url: quickExg.apiList,
@@ -63,13 +72,26 @@ quickExg.populateOptions = () => {
 			access_key: quickExg.apiKey,
 		},
 	}).then((data) => {
+		// FIAT
 		const fiatCurrencies = data.fiat;
 		globalFiat = fiatCurrencies;
+		
+		// holds fiat fullNames
 		const fiatDisplay = [];
+
 		for (const key in fiatCurrencies) {
+			const fiatFullName = `${fiatCurrencies[key]} (${key})`;
+			const fiatSymbol = key;
 			fiatDisplay.push(`${fiatCurrencies[key]} (${key})`);
+
+			const refFiat = {
+				name: fiatFullName,
+				symbol: fiatSymbol,
+			}
+			symbol.push(refFiat);
 		}
 
+		// CRYPTO
 		const cryptoCurrencies = data.crypto;
 		const cryptoDisplay = [];
 		for (let key in cryptoCurrencies) {
@@ -79,11 +101,11 @@ quickExg.populateOptions = () => {
 			const fullName = item.name_full;
 
 			// this sends into our symbol array
-			const ref = {
+			const refCrypto = {
 				name: fullName,
 				symbol: item.symbol,
 			}
-			symbol.push(ref);
+			symbol.push(refCrypto);
 			cryptoDisplay.push(fullName);
 		}
 
