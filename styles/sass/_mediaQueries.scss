@@ -11,17 +11,20 @@
         main {
             display: flex;
             flex-direction: column;
-            // h1 {
-            //     margin-top: 50px;
-            // }
+            height: 100%;
+            h1 {
+                // margin-bottom: 50px;
+            }
         }
         .mainDisplay {
             flex-direction: column;
-            padding: 20px;
+            padding: 20px 0;
+            margin: 8% auto;
             form.sell,
             form.buy {
                 width: 100%;
-                margin: 10px auto;
+                height: 100%;
+                margin: 20px auto;
                 padding: 20px 0;
                 font-size: calc(1.3rem + 0.7vw);
             }
