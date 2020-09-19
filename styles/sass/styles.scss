@@ -111,4 +111,10 @@ footer {
     color: white;
     text-align: center;
     padding: 5px 0;
+    border-top: 1px double $mainYellow;
+    font-size: calc(1rem + 0.5vw);
+    .bmac,
+    .karan {
+        color: rgb(173, 122, 28);
+    }
 }

@@ -7,7 +7,7 @@
 @media (max-width: 768px) {
     body {
         overflow-y: visible;
-        padding-top: 20px;
+        padding-top: 20px 0;
         main {
             height: 100%;
             display: flex;
@@ -24,6 +24,7 @@
                 width: 100%;
                 margin: 10px auto;
                 padding: 20px 0;
+                font-size: calc(1.3rem + 0.7vw);
             }
         }
     }

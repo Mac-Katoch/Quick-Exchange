@@ -343,7 +343,7 @@ a {
 @media (max-width: 768px) {
   body {
     overflow-y: visible;
-    padding-top: 20px;
+    padding-top: 20px 0;
   }
   body main {
     height: 100%;
@@ -370,6 +370,7 @@ a {
     width: 100%;
     margin: 10px auto;
     padding: 20px 0;
+    font-size: calc(1.3rem + 0.7vw);
   }
 }
 
@@ -519,4 +520,11 @@ footer {
   color: white;
   text-align: center;
   padding: 5px 0;
+  border-top: 1px double #fff0d3;
+  font-size: calc(1rem + 0.5vw);
+}
+
+footer .bmac,
+footer .karan {
+  color: #ad7a1c;
 }
