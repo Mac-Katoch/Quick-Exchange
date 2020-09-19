@@ -13,6 +13,7 @@ body {
 main {
     h1 {
         font-size: calc(5rem + 4vw);
+        text-align: center;
         text-shadow: rgb(73, 73, 36) 2px 2px 5px;
         margin: 0;
         z-index: 999;
@@ -38,15 +39,16 @@ main {
         align-items: center;
         border: 1px $mainYellow solid;
         box-shadow: 10px 10px 40px rgb(128, 118, 96), -10px -10px 40px rgb(250, 243, 227);
-        height: 70%;
+        height: 80%;
         width: 47%;
         border-radius: 8px;
+        font-size: calc(1rem + 0.7vw);
         * {
             margin: 8px;
             text-align: center;
         }
         label {
-            font-size: calc(1.7rem + 1vw);
+            font-size: calc(1.8rem + 1vw);
             background: $mainYellow;
             padding: 1% 5%;
             border: 1px solid $mainGray;
@@ -56,6 +58,7 @@ main {
             outline: none;
             border: 1px solid wheat;
             padding: 2px 0; 
+            width: 90%;
             font-family: 'Poppins', sans-serif;
         }
         .dollarValue {
@@ -64,9 +67,9 @@ main {
             text-transform: capitalize;
             border: 2px wheat solid;
             padding: 2px;
+            width: 70%;
         }
         h2 {
-            font-size: calc(1rem + 0.7vw);
             font-weight: 400;
             color: white;
             text-shadow: black 2px 2px 5px;
@@ -101,4 +104,11 @@ main {
         background-size: cover;
         background-position: center;
     }
+}
+
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
 }

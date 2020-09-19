@@ -339,15 +339,31 @@ a {
 }
 
 /* Portrait tablet and small desktops */
-@media (max-width: 950px) {
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
   body {
-    height: 200vh;
+    overflow-y: visible;
+    padding-top: 20px;
+  }
+  body main {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  body main h1 {
+    margin-top: 50px;
   }
   body .mainDisplay {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding: 20px;
   }
   body .mainDisplay form.sell,
   body .mainDisplay form.buy {
@@ -357,7 +373,6 @@ a {
   }
 }
 
-/* Landscape phone to portrait tablet */
 /* Landscape phones and down */
 body {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fff0d3), to(#6b624e));
@@ -384,6 +399,7 @@ main {
 
 main h1 {
   font-size: calc(5rem + 4vw);
+  text-align: center;
   text-shadow: #494924 2px 2px 5px;
   margin: 0;
   z-index: 999;
@@ -420,9 +436,10 @@ main h1 {
   border: 1px #fff0d3 solid;
   -webkit-box-shadow: 10px 10px 40px #807660, -10px -10px 40px #faf3e3;
           box-shadow: 10px 10px 40px #807660, -10px -10px 40px #faf3e3;
-  height: 70%;
+  height: 80%;
   width: 47%;
   border-radius: 8px;
+  font-size: calc(1rem + 0.7vw);
 }
 
 .mainDisplay form * {
@@ -431,7 +448,7 @@ main h1 {
 }
 
 .mainDisplay form label {
-  font-size: calc(1.7rem + 1vw);
+  font-size: calc(1.8rem + 1vw);
   background: #fff0d3;
   padding: 1% 5%;
   border: 1px solid rgba(128, 128, 128, 0.6);
@@ -442,6 +459,7 @@ main h1 {
   outline: none;
   border: 1px solid wheat;
   padding: 2px 0;
+  width: 90%;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -451,10 +469,10 @@ main h1 {
   text-transform: capitalize;
   border: 2px wheat solid;
   padding: 2px;
+  width: 70%;
 }
 
 .mainDisplay form h2 {
-  font-size: calc(1rem + 0.7vw);
   font-weight: 400;
   color: white;
   text-shadow: black 2px 2px 5px;
@@ -494,4 +512,11 @@ main h1 {
   background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.815), rgba(33, 25, 109, 0.774)), url("../assets/crypto.jpg");
   background-size: cover;
   background-position: center;
+}
+
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
 }

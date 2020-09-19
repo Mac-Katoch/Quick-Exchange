@@ -1,15 +1,20 @@
 const quickExg = {};
 
-let globalCrypto = [];
+
 // could hold objects with {symbol: and rate:}
+let globalCrypto = [];
 
 // holds objects of name, symbol
 quickExg.symbol = [];
-// console.log(symbol);
 
 quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
+
+quickExg.sell = $('.sell');
+quickExg.dollarSell = $('.dollarSell');
+quickExg.dropDown = $('.dropDown');
+
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
@@ -36,8 +41,8 @@ quickExg.symbolConverter = function (input) {
 
 //getting "selection" from user to determine which currency string to use
 quickExg.getInput = () => {
-	// when the user changes the dropdown selection
-	$('.dropDown').on('change', function () {
+	//TODO another cache?? this??
+	quickExg.dropDown.on('change', function () {
 		// the selction variable holds that string val
 		const selection = $(this).val();
 		// pass that selection var into the listData
@@ -141,10 +146,12 @@ quickExg.ratesData = (targetFiat, symbol) => {
 
 // Creating function to get input from user and display converted amount
 quickExg.displayAmt = () => {
-	$('#sell').on('submit', function (e) {
+	// TODO $('#sell') >>> should be using "this.sell"???
+	quickExg.sell.on('submit', function (e) {
 		e.preventDefault();
 		// $('.dollarBuy').attr('value', $('.dollarSell').val());
-		const sellValue = $('.dollarSell').val();
+		//TODO cache
+		const sellValue = quickExg.dollarSell.val();
 	});
 };
 
