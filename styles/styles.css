@@ -434,7 +434,6 @@ main h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px #fff0d3 solid;
   -webkit-box-shadow: 10px 10px 40px #807660, -10px -10px 40px #faf3e3;
           box-shadow: 10px 10px 40px #807660, -10px -10px 40px #faf3e3;
   height: 80%;
@@ -450,9 +449,10 @@ main h1 {
 
 .mainDisplay form label {
   font-size: calc(1.8rem + 1vw);
+  text-shadow: #494924 1px 1px 2px;
   background: #fff0d3;
   padding: 1% 5%;
-  border: 1px solid rgba(128, 128, 128, 0.6);
+  border: 0.6px solid black;
   border-radius: 8px;
 }
 
@@ -476,7 +476,7 @@ main h1 {
 .mainDisplay form h2 {
   font-weight: 400;
   color: white;
-  text-shadow: black 2px 2px 5px;
+  text-shadow: black 2px 2px 3px;
 }
 
 .mainDisplay form button.submitBtn {
@@ -502,6 +502,7 @@ main h1 {
 }
 
 .mainDisplay .sell {
+  border: 0.8px #fff0d3 solid;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(226, 208, 168, 0.904)), to(rgba(33, 31, 58, 0.795))), url("../assets/fiat.jpg");
   background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.904), rgba(33, 31, 58, 0.795)), url("../assets/fiat.jpg");
   background-size: cover;
@@ -509,6 +510,7 @@ main h1 {
 }
 
 .mainDisplay .buy {
+  border: 0.8px #96afa3 solid;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 209, 214, 0.815)), to(rgba(33, 25, 109, 0.774))), url("../assets/crypto.jpg");
   background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.815), rgba(33, 25, 109, 0.774)), url("../assets/crypto.jpg");
   background-size: cover;
@@ -526,5 +528,5 @@ footer {
 
 footer .bmac,
 footer .karan {
-  color: #ad7a1c;
+  color: #96afa3;
 }
