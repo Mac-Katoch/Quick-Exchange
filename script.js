@@ -2,10 +2,11 @@ const quickExg = {};
 
 
 // could hold objects with {symbol: and rate:}
-let globalCrypto = [];
+// let globalCrypto = [];
 
 // holds objects of name, symbol
 quickExg.symbol = [];
+
 
 quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
@@ -26,7 +27,20 @@ quickExg.addStartButton = function () {
 	});
 };
 
-// get symbols for fiat and crypto
+//getting "selection" from user to determine which currency string to use,
+// passes result to symbolConverter
+quickExg.getInput = () => {
+	//TODO another cache?? why cant we use 'this'??
+	quickExg.dropDown.on('change', function () {
+		// the selction variable holds that string val
+		const selection = $(this).val();
+
+		// THIS RETURNS CRYPTO RATES (NUMBER) VALUES
+		quickExg.ratesData(quickExg.symbolConverter(selection));
+	});
+};
+
+// get symbols for fiat and crypto out of the full names generated from getInput
 quickExg.symbolConverter = function (input) {
 	let currentSymbol = '';
 	// look at each ref(element) in symbol
@@ -37,34 +51,38 @@ quickExg.symbolConverter = function (input) {
 			// if crypto, use as reference towards third party fiat tg
 			currentSymbol = element.symbol;
 		}
-		// console.log(currentSymbol);
 	});
 	return currentSymbol;
 };
 
-//getting "selection" from user to determine which currency string to use
-quickExg.getInput = () => {
-	//TODO another cache?? why cant we use 'this'??
-	quickExg.dropDown.on('change', function () {
-		// the selction variable holds that string val
-		const selection = $(this).val();
-		// pass that selection var into the listData
-		const testing = quickExg.symbolConverter(selection);
-		console.log(testing);
+// calculates from user input to api output, using symbol converter to get rate
+quickExg.ratesData = async function (symbol, targetFiat = "USD") {
+	let value = 0;
+
+	await $.ajax({
+		url: quickExg.apiLive,
+		method: 'GET',
+		dataType: 'JSON',
+		data: {
+			access_key: quickExg.apiKey,
+			target: targetFiat,
+		},
+	}).then((data) => {
+		//use symbol to access number value at symbol key CRYPTO ONLY
+		value = data.rates[symbol];
 	});
+	return value;
 };
 
-// $.ajax({
-// 	url: quickExg.apiList,
-// 	method: 'GET',
-// 	dataType: 'JSON',
-// 	data: {
-// 		access_key: quickExg.apiKey,
-// 		target: input,
-// 	},
-// }).then((data) => {
-// 	//
-// });
+// get exact user dollar from user 'input .dollarSell' and on button submitBtn 
+quickExg.getUserAmount = function () {
+	quickExg.sell.on('submit', () => {
+		let userAmt = quickExg.dollarSell.val();
+		// console.log(userAmt);
+		return userAmt;
+	})
+	console.log(userAmt);
+}
 
 //getting all currency objects and making an array out of the symbols
 quickExg.populateOptions = () => {
@@ -122,30 +140,10 @@ quickExg.populateOptions = () => {
 quickExg.dropDownMenu = (currencyArray) => {
 	currencyArray.forEach((currency) => {
 		const result = $(`<option value='${currency}'>`).text(currency);
-		$('.dropDown').append(result);
+		quickExg.dropDown.append(result);
 	});
 };
 
-// Creating function to calculate from user input to api output
-quickExg.ratesData = (targetFiat, symbol) => {
-	$.ajax({
-		url: quickExg.apiLive,
-		method: 'GET',
-		dataType: 'JSON',
-		data: {
-			access_key: quickExg.apiKey,
-			target: targetFiat,
-		},
-	}).then((data) => {
-		const rates = data.rates;
-		for (let key in rates) {
-			if (key === symbol) {
-			}
-		}
-	});
-};
-// this function gives us the rate of all crypto based on selected fiat
-// use the symbol from the dropdown to get from sell >> buy
 
 // Creating function to get input from user and display converted amount
 quickExg.displayAmt = () => {
@@ -162,18 +160,15 @@ quickExg.displayAmt = () => {
 quickExg.init = () => {
 	quickExg.addStartButton();
 	quickExg.getInput();
-	// quickExg.symbolConverter();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
-	quickExg.ratesData();
+	quickExg.getUserAmount();
 };
 
 //DOCUMENT READY FUNCTION
 $(function () {
 	quickExg.init();
 });
-
-// JQUERY CACHING *****
 
 /*
 // NATIONAL CURR -> CRYPTO
