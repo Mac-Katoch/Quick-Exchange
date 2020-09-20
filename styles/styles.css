@@ -448,6 +448,7 @@ main h1 {
 .mainDisplay .buy * {
   margin: 8px;
   text-align: center;
+  border-radius: 8px;
 }
 
 .mainDisplay .sell label,
@@ -457,13 +458,13 @@ main h1 {
   background: #fff0d3;
   padding: 1% 5%;
   border: 0.6px solid black;
-  border-radius: 8px;
 }
 
 .mainDisplay .sell select,
 .mainDisplay .buy select {
   outline: none;
   border: 1px solid wheat;
+  border-radius: 1px;
   padding: 2px 0;
   width: 90%;
   font-family: 'Poppins', sans-serif;

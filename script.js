@@ -91,22 +91,28 @@ quickExg.getUserAmount = function () {
 		// await e.preventDefault();
 		// Get user selection for buy currency type
 		const buyLongName = quickExg.buyDropDown.val();
-		console.log(buyLongName); // works
+		// console.log(buyLongName); // works
 
 		const buySymbol = quickExg.symbolConverter(buyLongName);
-		console.log(buySymbol);
+		// console.log(buySymbol);
 
 		const sellLongName = quickExg.sellDropDown.val();
-		console.log(sellLongName); // works
+		// console.log(sellLongName); // works
 
 		const sellSymbol = quickExg.symbolConverter(sellLongName);
-		console.log(sellSymbol); // works
+		// console.log(sellSymbol); // works
 
 		const rate = await quickExg.ratesData(sellSymbol);
-		console.log(rate); // works for crypto sell only
+		// console.log(rate); // works for crypto sell only
 
-		// const userAmt = quickExg.dollarSell.val();
-		// const converted = userAmt * rate;
+		const userAmt = quickExg.dollarSell.val();
+		const converted = (exgRate) => {
+			return userAmt * exgRate;
+		}
+		console.log(converted(rate));
+
+		//show in the result box, the conversion from crpto sell to fiat buy
+		$(".results").text(converted(rate));
 
 	});
 	// console.log(userAmt);
