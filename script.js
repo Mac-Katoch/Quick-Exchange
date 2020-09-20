@@ -1,16 +1,15 @@
 const quickExg = {};
 //TESTING UP DATED CODE ON GIT PUSH
 
-
-
-
-
-
 // could hold objects with {symbol: and rate:}
 // let globalCrypto = [];
 
 // holds objects of name, symbol
 quickExg.symbol = [];
+
+// holds array of long names
+quickExg.cryptoNamesArray = [];
+quickExg.fiatNamesArray = [];
 
 quickExg.apiKey = 'f92be607079263073b991b0fe5fa5e23';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
@@ -86,7 +85,6 @@ quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 
 // get exact user dollar from user 'input .dollarSell' and on button submitBtn
 quickExg.getUserAmount = function () {
-
 	quickExg.sell.on('submit', async () => {
 		// await e.preventDefault();
 		// Get user selection for buy currency type
@@ -107,13 +105,12 @@ quickExg.getUserAmount = function () {
 
 		const userAmt = quickExg.dollarSell.val();
 		const converted = (exgRate) => {
-			return userAmt * exgRate;
-		}
+			return (userAmt * exgRate).toFixed(2);
+		};
 		console.log(converted(rate));
 
 		//show in the result box, the conversion from crpto sell to fiat buy
-		$(".results").text(converted(rate));
-
+		$('.results').text(converted(rate));
 	});
 	// console.log(userAmt);
 };
@@ -133,12 +130,12 @@ quickExg.populateOptions = () => {
 		globalFiat = fiatCurrencies;
 
 		// holds fiat fullNames
-		const fiatDisplay = [];
+		// const fiatDisplay = [];
 
 		for (const key in fiatCurrencies) {
 			const fiatFullName = `${fiatCurrencies[key]} (${key})`;
 			const fiatSymbol = key;
-			fiatDisplay.push(`${fiatCurrencies[key]} (${key})`);
+			quickExg.fiatNamesArray.push(`${fiatCurrencies[key]} (${key})`);
 
 			const refFiat = {
 				name: fiatFullName,
@@ -149,7 +146,7 @@ quickExg.populateOptions = () => {
 
 		// CRYPTO
 		const cryptoCurrencies = data.crypto;
-		const cryptoDisplay = [];
+		// const cryptoDisplay = [];
 		for (let key in cryptoCurrencies) {
 			// this gets us the individual currency objects
 			const item = cryptoCurrencies[key];
@@ -162,11 +159,11 @@ quickExg.populateOptions = () => {
 				symbol: item.symbol,
 			};
 			quickExg.symbol.push(refCrypto);
-			cryptoDisplay.push(fullName);
+			quickExg.cryptoNamesArray.push(fullName);
 		}
 
-		const masterDisplay = fiatDisplay.concat(cryptoDisplay);
-		quickExg.dropDownMenu(masterDisplay);
+		// const masterDisplay = fiatDisplay.concat(cryptoDisplay);
+		quickExg.dropDownMenu(quickExg.cryptoNamesArray);
 	});
 };
 
