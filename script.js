@@ -62,6 +62,7 @@ quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 	}).then((data) => {
 		//use symbol to access number value at symbol key CRYPTO ONLY
 		value = data.rates[symbol];
+		console.log(data);
 	});
 	// console.log(value); // works
 	return value;
@@ -84,12 +85,12 @@ quickExg.getUserAmount = function () {
 		const sellSymbol = quickExg.symbolConverter(sellLongName);
 		// console.log(sellSymbol); // works
 
-		const rate = await quickExg.ratesData(sellSymbol);
+		const rate = await quickExg.ratesData(buySymbol);
 		// console.log(rate); // works for crypto sell only
 
 		const userAmt = quickExg.dollarSell.val();
 		const converted = (exgRate) => {
-			return (userAmt * exgRate).toFixed(2);
+			return userAmt / exgRate;
 		};
 		console.log(converted(rate));
 
@@ -146,15 +147,15 @@ quickExg.populateOptions = () => {
 			quickExg.cryptoNamesArray.push(fullName);
 		}
 
-		// const masterDisplay = fiatDisplay.concat(cryptoDisplay);
-		// quickExg.dropDownMenu(quickExg.cryptoNamesArray);
+		// TODO Find a better way to call this function
+		// Unlike sell
+		quickExg.buyDropDownMenu(quickExg.cryptoNamesArray);
 	});
 };
 
 //populate dropdown with symbols from populateOptions
-quickExg.sellDropDownMenu = function (currencyArray) {
+quickExg.sellDropDownMenu = function () {
 	$('.sellCheckbox').on('change', function () {
-		console.log('Switched');
 		quickExg.sellDropDown.empty();
 		if ($(this).is(':checked')) {
 			quickExg.cryptoNamesArray.forEach((currency) => {
@@ -174,22 +175,12 @@ quickExg.sellDropDownMenu = function (currencyArray) {
 
 //populate dropdown with symbols from populateOptions
 quickExg.buyDropDownMenu = function (currencyArray) {
-	$('.buyCheckbox').on('change', function () {
-		console.log('Switched');
-		quickExg.buyDropDown.empty();
-		if ($(this).is(':checked')) {
-			quickExg.cryptoNamesArray.forEach((currency) => {
-				const result = $(`<option value='${currency}'>`).text(currency);
-				//TODO populate both dropdowns
-				quickExg.buyDropDown.append(result);
-			});
-		} else {
-			quickExg.fiatNamesArray.forEach((currency) => {
-				const result = $(`<option value='${currency}'>`).text(currency);
-				//TODO populate both dropdowns
-				quickExg.buyDropDown.append(result);
-			});
-		}
+	// console.log('This started!');
+	quickExg.cryptoNamesArray.forEach((currency) => {
+		console.log('This started!');
+		const result = $(`<option value='${currency}'>`).text(currency);
+		//TODO populate both dropdowns
+		quickExg.buyDropDown.append(result);
 	});
 };
 
@@ -206,7 +197,7 @@ quickExg.displayAmt = () => {
 quickExg.init = () => {
 	quickExg.addStartButton();
 	quickExg.sellDropDownMenu();
-	quickExg.buyDropDownMenu();
+	// quickExg.buyDropDownMenu();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.getUserAmount();
