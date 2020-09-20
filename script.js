@@ -1,4 +1,10 @@
 const quickExg = {};
+//TESTING UP DATED CODE ON GIT PUSH
+
+
+
+
+
 
 // could hold objects with {symbol: and rate:}
 // let globalCrypto = [];
