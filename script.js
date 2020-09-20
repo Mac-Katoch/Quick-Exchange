@@ -1,8 +1,10 @@
 const quickExg = {};
-//TESTING UP DATED CODE ON GIT PUSH
 
-// could hold objects with {symbol: and rate:}
-// let globalCrypto = [];
+//TODO >>>> fix the friggin checkbox styling dude 
+//TODO >>>> error handling for entering anything other than a number
+//TODO >>>> find a better way to execute the dropdown population????
+//TODO >>>> make the text beside the checkbox glow on select
+//TODO >>>> alert if they dont enter any stuff 
 
 // holds objects of name, symbol
 quickExg.symbol = [];
@@ -15,7 +17,6 @@ quickExg.apiKey = 'f92be607079263073b991b0fe5fa5e23';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
 
-// these solved the issue of the modal loading slowly
 quickExg.start = $('.start');
 quickExg.modal = $('.modalContainer');
 
@@ -62,28 +63,21 @@ quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 	}).then((data) => {
 		//use symbol to access number value at symbol key CRYPTO ONLY
 		value = data.rates[symbol];
-		// console.log(data);
 	});
-	// console.log(value); // works
 	return value;
 };
 
 // get exact user dollar from user 'input .dollarSell' and on button submitBtn
 quickExg.getUserAmount = function () {
 	quickExg.sell.on('submit', async () => {
-		// await e.preventDefault();
 		// Get user selection for buy currency type
 		const buyLongName = quickExg.buyDropDown.val();
-		// console.log(buyLongName); // works
 
 		const buySymbol = quickExg.symbolConverter(buyLongName);
-		// console.log(buySymbol);
 
 		const sellLongName = quickExg.sellDropDown.val();
-		// console.log(sellLongName); // works
 
 		const sellSymbol = quickExg.symbolConverter(sellLongName);
-		// console.log(sellSymbol); // works
 		
 		if ($('.sellCheckbox').is(':checked')) {
 			// crypto to crypto conversion if checked
@@ -95,7 +89,6 @@ quickExg.getUserAmount = function () {
 				return userAmt * cryptoToCrypto;
 			}
 			$('.results').text(converted());
-			// console.log(converted());
 		} else {
 			// fiat to crypto
 			const rate = await quickExg.ratesData(buySymbol);
@@ -108,7 +101,6 @@ quickExg.getUserAmount = function () {
 		}
 		//show in the result box, the conversion from crpto sell to fiat buy
 	});
-	// console.log(userAmt);
 };
 
 //getting all currency objects and making an array out of the symbols
@@ -125,9 +117,6 @@ quickExg.populateOptions = () => {
 		const fiatCurrencies = data.fiat;
 		globalFiat = fiatCurrencies;
 
-		// holds fiat fullNames
-		// const fiatDisplay = [];
-
 		for (const key in fiatCurrencies) {
 			const fiatFullName = `${fiatCurrencies[key]} (${key})`;
 			const fiatSymbol = key;
@@ -142,7 +131,6 @@ quickExg.populateOptions = () => {
 
 		// CRYPTO
 		const cryptoCurrencies = data.crypto;
-		// const cryptoDisplay = [];
 		for (let key in cryptoCurrencies) {
 			// this gets us the individual currency objects
 			const item = cryptoCurrencies[key];
@@ -158,9 +146,13 @@ quickExg.populateOptions = () => {
 			quickExg.cryptoNamesArray.push(fullName);
 		}
 
-		// TODO Find a better way to call this function
-		// Unlike sell
 		quickExg.buyDropDownMenu(quickExg.cryptoNamesArray);
+
+		// makes default array crypto on left side.
+		quickExg.cryptoNamesArray.forEach((currency) => {
+			const result = $(`<option value='${currency}'>`).text(currency);
+			quickExg.sellDropDown.append(result);
+		});
 	});
 };
 
@@ -172,13 +164,11 @@ quickExg.sellDropDownMenu = function () {
 		if ($(this).is(':checked')) {
 			quickExg.cryptoNamesArray.forEach((currency) => {
 				const result = $(`<option value='${currency}'>`).text(currency);
-				//TODO populate both dropdowns
 				quickExg.sellDropDown.append(result);
 			});
 		} else {
 			quickExg.fiatNamesArray.forEach((currency) => {
 				const result = $(`<option value='${currency}'>`).text(currency);
-				//TODO populate both dropdowns
 				quickExg.sellDropDown.append(result);
 			});
 		}
@@ -189,9 +179,7 @@ quickExg.sellDropDownMenu = function () {
 quickExg.buyDropDownMenu = function (currencyArray) {
 	// console.log('This started!');
 	quickExg.cryptoNamesArray.forEach((currency) => {
-		console.log('This started!');
 		const result = $(`<option value='${currency}'>`).text(currency);
-		//TODO populate both dropdowns
 		quickExg.buyDropDown.append(result);
 	});
 };
@@ -200,8 +188,7 @@ quickExg.buyDropDownMenu = function (currencyArray) {
 quickExg.displayAmt = () => {
 	quickExg.sell.on('submit', function (e) {
 		e.preventDefault();
-		// $('.dollarBuy').attr('value', $('.dollarSell').val());
-		const sellValue = quickExg.dollarSell.val();
+		// const sellValue = quickExg.dollarSell.val();
 	});
 };
 
@@ -209,7 +196,6 @@ quickExg.displayAmt = () => {
 quickExg.init = () => {
 	quickExg.addStartButton();
 	quickExg.sellDropDownMenu();
-	// quickExg.buyDropDownMenu();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.getUserAmount();
@@ -220,14 +206,3 @@ $(function () {
 	quickExg.init();
 });
 
-/*
-// NATIONAL CURR -> CRYPTO
-// Ajax call with target being the national curr
-// Locate crypto curr in the object
-// Multiply the rate with user entered quantity
-// CRYPTO -> CRYPTO
-// Ajax call with default live (USD)
-// Locate both crypto objects and identify rates
-// Multiply or divide the rates to get the crypto to crypto rate <---EXTRA STEP
-// We multiply calculated crypto rate with user entered quantity
-*/

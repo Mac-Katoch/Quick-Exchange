@@ -16,19 +16,20 @@
 
 	<body>
 
-		<!-- <div class="modalContainer">
+		<div class="modalContainer">
 			<div class="modalCenter">
 				<p>the fastest way to see what you've got, and better yet...</p>
 				<p>what you <i>could</i> have</p>
 				<button class="start">Start</button>
 			</div>
-		</div> -->
+		</div>
 
 		<main class="wrapper">
 			<h1>Quick Exg</h1>
 			<form class="mainDisplay mainContent" action="submit">
 				<div class="sell" id="sell">
 					<label for="sellCurrency">Currency You're Selling:</label>
+
 					<div class="changeDropDown">
 						<p class="fiatSwitch">Fiat</p>
 						<label class="switch">
@@ -37,12 +38,14 @@
 						</label>
 						<p class="cryptoSwitch">Crypto</p>
 					</div>
+
 					<div class="selectDiv">
 						<select class="dropDown sellDropDown" name="sellCurrency" id="sellCurrency">
-							<option value="CAD"></option>
+							<option class="option" value="CAD">Make a Selection!</option>
 						</select>
 					</div>
-					<input class="dollarValue dollarSell" type="text" value="" placeholder="Enter Exact Amount"></input>
+
+					<input class="dollarValue dollarSell" type="text" value="" placeholder="$$.$$"></input>
 					<!-- <h2>Ready?</h2> -->
 					<button class="submitBtn" type="submit">Convert</button>
 					<!-- Exchange -->
@@ -50,23 +53,16 @@
 
 				<div class="buy">
 					<label for="buyCurrency">Currency You're Buying:</label>
-						<!-- <div class="changeDropDown">
-							<p class="fiatSwitch">Fiat</p>
-							<label class="switch">
-								<input type="checkbox" class="buyCheckbox">
-								<span class="slider"></span>
-							</label>
-							<p class="cryptoSwitch">Crypto</p>
-					</div> -->
+						
 					<div class="selectDiv">
 						<select class="dropDown buyDropDown" name="buyCurrency" id="buyCurrency">
-							<option value="CAD"></option>
+							<option value="CAD">Make a Selection</option>
 						</select>
 						</div>
 					<!-- <input class="dollarValue dollarBuy" type="text" placeholder="Converted value" disabled></input> -->
 
 					<h2>Result:</h2>
-					<p class="results" style="font-size: 2rem">00.00</p>
+					<p class="results" style="font-size: 2rem">$$.$$</p>
 					<!-- Exchange -->
 				</div>
 			</form>

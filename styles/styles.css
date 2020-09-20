@@ -338,6 +338,76 @@ a {
   border: 1px solid black;
 }
 
+.changeDropDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.changeDropDown p {
+  color: rgba(184, 183, 183, 0.8);
+}
+
+.changeDropDown .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0;
+}
+
+.changeDropDown .switch .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.changeDropDown .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #24b364;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196f3;
+          box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
 /* Portrait tablet and small desktops */
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
@@ -447,13 +517,6 @@ main h1 {
   font-size: calc(1rem + 0.7vw);
 }
 
-.mainDisplay .sell *,
-.mainDisplay .buy * {
-  margin: 8px;
-  text-align: center;
-  border-radius: 8px;
-}
-
 .mainDisplay .sell label,
 .mainDisplay .buy label {
   font-size: calc(1.8rem + 1vw);
@@ -461,6 +524,9 @@ main h1 {
   background: #fff0d3;
   padding: 1% 5%;
   border: 0.6px solid black;
+  margin: 8px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .mainDisplay .sell select,
@@ -471,6 +537,9 @@ main h1 {
   padding: 2px 0;
   width: 90%;
   font-family: 'Poppins', sans-serif;
+  margin: 8px;
+  border-radius: 1px;
+  text-align: center;
 }
 
 .mainDisplay .sell .dollarValue,
@@ -480,7 +549,10 @@ main h1 {
   text-transform: capitalize;
   border: 2px wheat solid;
   padding: 2px;
-  width: 70%;
+  width: 30%;
+  margin: 8px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .mainDisplay .sell h2,
@@ -515,6 +587,8 @@ main h1 {
   padding: 1% 12%;
   border: none;
   font-size: 2rem;
+  margin: 8px;
+  border-radius: 8px;
 }
 
 .mainDisplay .sell {
@@ -545,70 +619,4 @@ footer {
 footer .bmac,
 footer .karan {
   color: #96afa3;
-}
-
-.changeDropDown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #24b364;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: '';
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  -webkit-box-shadow: 0 0 1px #2196f3;
-          box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
