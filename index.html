@@ -30,12 +30,12 @@
 				<div class="sell" id="sell">
 					<label for="sellCurrency">Currency You're Selling:</label>
 					<div class="changeDropDown">
-						<p class="cryptoSwitch">Crypto</p>
+						<p class="fiatSwitch">Fiat</p>
 						<label class="switch">
-							<input type="checkbox" class="checkbox">
+							<input type="checkbox" class="sellCheckbox">
 							<span class="slider"></span>
 						</label>
-						<p class="fiatSwitch">Fiat</p>
+						<p class="cryptoSwitch">Crypto</p>
 					</div>
 					<div class="selectDiv">
 						<select class="dropDown sellDropDown" name="sellCurrency" id="sellCurrency">
@@ -50,6 +50,14 @@
 
 				<div class="buy">
 					<label for="buyCurrency">Currency You're Buying:</label>
+						<div class="changeDropDown">
+							<p class="fiatSwitch">Fiat</p>
+							<label class="switch">
+								<input type="checkbox" class="buyCheckbox">
+								<span class="slider"></span>
+							</label>
+							<p class="cryptoSwitch">Crypto</p>
+					</div>
 					<div class="selectDiv">
 						<select class="dropDown buyDropDown" name="buyCurrency" id="buyCurrency">
 							<option value="CAD"></option>

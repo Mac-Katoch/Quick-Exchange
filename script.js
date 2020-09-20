@@ -22,7 +22,7 @@ quickExg.modal = $('.modalContainer');
 quickExg.sell = $('.mainDisplay');
 quickExg.dollarSell = $('.dollarSell');
 
-quickExg.sellDropDown = $('.dropDown');
+quickExg.sellDropDown = $('.sellDropDown');
 quickExg.buyDropDown = $('.buyDropDown');
 
 // when user clicks start on modal, fade out
@@ -152,8 +152,8 @@ quickExg.populateOptions = () => {
 };
 
 //populate dropdown with symbols from populateOptions
-quickExg.dropDownMenu = function (currencyArray) {
-	$('.checkbox').on('change', function () {
+quickExg.sellDropDownMenu = function (currencyArray) {
+	$('.sellCheckbox').on('change', function () {
 		console.log('Switched');
 		quickExg.sellDropDown.empty();
 		if ($(this).is(':checked')) {
@@ -168,13 +168,28 @@ quickExg.dropDownMenu = function (currencyArray) {
 				//TODO populate both dropdowns
 				quickExg.sellDropDown.append(result);
 			});
-			// console.log(this);
 		}
-		// currencyArray.forEach((currency) => {
-		// 	const result = $(`<option value='${currency}'>`).text(currency);
-		// 	//TODO populate both dropdowns
-		// 	quickExg.sellDropDown.append(result);
-		// });
+	});
+};
+
+//populate dropdown with symbols from populateOptions
+quickExg.buyDropDownMenu = function (currencyArray) {
+	$('.buyCheckbox').on('change', function () {
+		console.log('Switched');
+		quickExg.buyDropDown.empty();
+		if ($(this).is(':checked')) {
+			quickExg.cryptoNamesArray.forEach((currency) => {
+				const result = $(`<option value='${currency}'>`).text(currency);
+				//TODO populate both dropdowns
+				quickExg.buyDropDown.append(result);
+			});
+		} else {
+			quickExg.fiatNamesArray.forEach((currency) => {
+				const result = $(`<option value='${currency}'>`).text(currency);
+				//TODO populate both dropdowns
+				quickExg.buyDropDown.append(result);
+			});
+		}
 	});
 };
 
@@ -190,7 +205,8 @@ quickExg.displayAmt = () => {
 //INIT FUNCTION
 quickExg.init = () => {
 	quickExg.addStartButton();
-	quickExg.dropDownMenu();
+	quickExg.sellDropDownMenu();
+	quickExg.buyDropDownMenu();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.getUserAmount();
