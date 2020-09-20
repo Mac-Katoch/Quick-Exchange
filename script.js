@@ -1,12 +1,10 @@
 const quickExg = {};
 
-
 // could hold objects with {symbol: and rate:}
 // let globalCrypto = [];
 
 // holds objects of name, symbol
 quickExg.symbol = [];
-
 
 quickExg.apiKey = 'c264a6564be08eac4e720222e86b3b61';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
@@ -18,7 +16,7 @@ quickExg.modal = $('.modalContainer');
 quickExg.sell = $('.sell');
 quickExg.dollarSell = $('.dollarSell');
 quickExg.dropDown = $('.dropDown');
-
+quickExg.buyDropDown = $('.buyDropDown');
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
@@ -27,18 +25,21 @@ quickExg.addStartButton = function () {
 	});
 };
 
-//getting "selection" from user to determine which currency string to use,
-// passes result to symbolConverter
-quickExg.getInput = () => {
-	//TODO another cache?? why cant we use 'this'??
-	quickExg.dropDown.on('change', function () {
-		// the selction variable holds that string val
-		const selection = $(this).val();
+// //getting "selection" from user to determine which currency string to use,
+// // passes result to symbolConverter
+// quickExg.getInput = () => {
+// 	//TODO another cache?? why cant we use 'this'??
+// 	quickExg.dropDown.on('change', function () {
+// 		// the selction variable holds that string val
+// 		const selection = $(this).val();
 
-		// THIS RETURNS CRYPTO RATES (NUMBER) VALUES
-		quickExg.ratesData(quickExg.symbolConverter(selection));
-	});
-};
+// 		// THIS RETURNS CRYPTO RATES (NUMBER) VALUES
+// 		quickExg.ratesData(quickExg.symbolConverter(selection));
+
+// 		const sellAmt = quickExg.getUserAmount();
+// 		console.log(sellAmt);
+// 	});
+// };
 
 // get symbols for fiat and crypto out of the full names generated from getInput
 quickExg.symbolConverter = function (input) {
@@ -56,7 +57,7 @@ quickExg.symbolConverter = function (input) {
 };
 
 // calculates from user input to api output, using symbol converter to get rate
-quickExg.ratesData = async function (symbol, targetFiat = "USD") {
+quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 	let value = 0;
 
 	await $.ajax({
@@ -71,18 +72,35 @@ quickExg.ratesData = async function (symbol, targetFiat = "USD") {
 		//use symbol to access number value at symbol key CRYPTO ONLY
 		value = data.rates[symbol];
 	});
+	// console.log(value);
 	return value;
 };
 
-// get exact user dollar from user 'input .dollarSell' and on button submitBtn 
+// get exact user dollar from user 'input .dollarSell' and on button submitBtn
 quickExg.getUserAmount = function () {
-	quickExg.sell.on('submit', () => {
-		let userAmt = quickExg.dollarSell.val();
-		// console.log(userAmt);
-		return userAmt;
-	})
-	console.log(userAmt);
-}
+	quickExg.sell.on('submit', async () => {
+		// Get user selection for buy currency type
+		const buyCurrency = quickExg.buyDropDown.val();
+		console.log(buyCurrency);
+		const currLongName = quickExg.dropDown.val();
+		const symbol = quickExg.symbolConverter(currLongName);
+		const rate = await quickExg.ratesData(symbol);
+		const userAmt = quickExg.dollarSell.val();
+		const converted = userAmt * rate;
+		// console.log(converted);
+
+		// console.log(userAmt, currLongName);
+
+		// console.log(symbol);b
+
+		// console.log(rate);
+		// console.log(rate);
+		// console.log(rate.then((data) => console.log(data)));
+		// const buyAmt = rate * userAmt;
+		// console.log(buyAmt);
+	});
+	// console.log(userAmt);
+};
 
 //getting all currency objects and making an array out of the symbols
 quickExg.populateOptions = () => {
@@ -144,7 +162,6 @@ quickExg.dropDownMenu = (currencyArray) => {
 	});
 };
 
-
 // Creating function to get input from user and display converted amount
 quickExg.displayAmt = () => {
 	// TODO $('#sell') >>> should be using "this.sell"???
@@ -159,7 +176,7 @@ quickExg.displayAmt = () => {
 //INIT FUNCTION
 quickExg.init = () => {
 	quickExg.addStartButton();
-	quickExg.getInput();
+	// quickExg.getInput();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.getUserAmount();
@@ -175,7 +192,6 @@ $(function () {
 // Ajax call with target being the national curr
 // Locate crypto curr in the object
 // Multiply the rate with user entered quantity
-
 // CRYPTO -> CRYPTO
 // Ajax call with default live (USD)
 // Locate both crypto objects and identify rates
