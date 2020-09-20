@@ -62,7 +62,7 @@ quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 	}).then((data) => {
 		//use symbol to access number value at symbol key CRYPTO ONLY
 		value = data.rates[symbol];
-		console.log(data);
+		// console.log(data);
 	});
 	// console.log(value); // works
 	return value;
@@ -84,18 +84,29 @@ quickExg.getUserAmount = function () {
 
 		const sellSymbol = quickExg.symbolConverter(sellLongName);
 		// console.log(sellSymbol); // works
-
-		const rate = await quickExg.ratesData(buySymbol);
-		// console.log(rate); // works for crypto sell only
-
-		const userAmt = quickExg.dollarSell.val();
-		const converted = (exgRate) => {
+		
+		if ($('.sellCheckbox').is(':checked')) {
+			// crypto to crypto conversion if checked
+			const rateBuy = await quickExg.ratesData(buySymbol);
+			const rateSell = await quickExg.ratesData(sellSymbol);
+			const cryptoToCrypto = rateSell / rateBuy;
+			const userAmt = quickExg.dollarSell.val();
+			const converted = () => {
+				return userAmt * cryptoToCrypto;
+			}
+			$('.results').text(converted());
+			// console.log(converted());
+		} else {
+			// fiat to crypto
+			const rate = await quickExg.ratesData(buySymbol);
+			const userAmt = quickExg.dollarSell.val();
+			const converted = (exgRate) => {
 			return userAmt / exgRate;
-		};
-		console.log(converted(rate));
-
-		//show in the result box, the conversion from crpto sell to fiat buy
+			}
 		$('.results').text(converted(rate));
+
+		}
+		//show in the result box, the conversion from crpto sell to fiat buy
 	});
 	// console.log(userAmt);
 };
@@ -155,6 +166,7 @@ quickExg.populateOptions = () => {
 
 //populate dropdown with symbols from populateOptions
 quickExg.sellDropDownMenu = function () {
+
 	$('.sellCheckbox').on('change', function () {
 		quickExg.sellDropDown.empty();
 		if ($(this).is(':checked')) {
