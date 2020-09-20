@@ -32,22 +32,6 @@ quickExg.addStartButton = function () {
 	});
 };
 
-// //getting "selection" from user to determine which currency string to use,
-// // passes result to symbolConverter
-// quickExg.getInput = () => {
-// 	//TODO another cache?? why cant we use 'this'??
-// 	quickExg.dropDown.on('change', function () {
-// 		// the selction variable holds that string val
-// 		const selection = $(this).val();
-
-// 		// THIS RETURNS CRYPTO RATES (NUMBER) VALUES
-// 		quickExg.ratesData(quickExg.symbolConverter(selection));
-
-// 		const sellAmt = quickExg.getUserAmount();
-// 		console.log(sellAmt);
-// 	});
-// };
-
 // get symbols for fiat and crypto out of the full names generated from getInput
 quickExg.symbolConverter = function (input) {
 	let currentSymbol = '';
@@ -163,16 +147,34 @@ quickExg.populateOptions = () => {
 		}
 
 		// const masterDisplay = fiatDisplay.concat(cryptoDisplay);
-		quickExg.dropDownMenu(quickExg.cryptoNamesArray);
+		// quickExg.dropDownMenu(quickExg.cryptoNamesArray);
 	});
 };
 
 //populate dropdown with symbols from populateOptions
-quickExg.dropDownMenu = (currencyArray) => {
-	currencyArray.forEach((currency) => {
-		const result = $(`<option value='${currency}'>`).text(currency);
-		//TODO populate both dropdowns
-		quickExg.sellDropDown.append(result);
+quickExg.dropDownMenu = function (currencyArray) {
+	$('.checkbox').on('change', function () {
+		console.log('Switched');
+		quickExg.sellDropDown.empty();
+		if ($(this).is(':checked')) {
+			quickExg.cryptoNamesArray.forEach((currency) => {
+				const result = $(`<option value='${currency}'>`).text(currency);
+				//TODO populate both dropdowns
+				quickExg.sellDropDown.append(result);
+			});
+		} else {
+			quickExg.fiatNamesArray.forEach((currency) => {
+				const result = $(`<option value='${currency}'>`).text(currency);
+				//TODO populate both dropdowns
+				quickExg.sellDropDown.append(result);
+			});
+			// console.log(this);
+		}
+		// currencyArray.forEach((currency) => {
+		// 	const result = $(`<option value='${currency}'>`).text(currency);
+		// 	//TODO populate both dropdowns
+		// 	quickExg.sellDropDown.append(result);
+		// });
 	});
 };
 
@@ -188,6 +190,7 @@ quickExg.displayAmt = () => {
 //INIT FUNCTION
 quickExg.init = () => {
 	quickExg.addStartButton();
+	quickExg.dropDownMenu();
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.getUserAmount();

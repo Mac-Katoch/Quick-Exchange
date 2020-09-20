@@ -1,126 +1,205 @@
-@import "setup";
-@import "menu";
-@import "mediaQueries";
+@import 'setup';
+@import 'menu';
+@import 'mediaQueries';
 
 $mainYellow: rgb(255, 240, 211);
 $mainGreen: #96afa3;
 $mainGray: rgba(128, 128, 128, 0.6);
 
 body {
-    background-image: linear-gradient(180deg, $mainYellow 50%, rgb(107, 98, 78) 100%);
-    position: relative;
-    height: 100vh;
+	background-image: linear-gradient(
+		180deg,
+		$mainYellow 50%,
+		rgb(107, 98, 78) 100%
+	);
+	position: relative;
+	height: 100vh;
 }
 main {
-    h1 {
-        font-size: calc(5rem + 4vw);
-        text-align: center;
-        text-shadow: rgb(73, 73, 36) 2px 2px 5px;
-        margin: 0;
-        z-index: 999;
-    }
-    height: calc(100% - 26.95px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	h1 {
+		font-size: calc(5rem + 4vw);
+		text-align: center;
+		text-shadow: rgb(73, 73, 36) 2px 2px 5px;
+		margin: 0;
+		z-index: 999;
+	}
+	height: calc(100% - 26.95px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .mainDisplay {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 70%;
-    width: 100%;
-    border-top: 8px double rgb(158, 133, 91);
-    .sell,
-    .buy {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 3;
-        box-shadow: 10px 10px 20px rgb(75, 69, 57), -20px -20px 20px rgb(250, 243, 227);
-        height: 80%;
-        width: 47%;
-        border-radius: 8px;
-        font-size: calc(1rem + 0.7vw);
-        * {
-            margin: 8px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        label {
-            font-size: calc(1.8rem + 1vw);
-            text-shadow: rgb(73, 73, 36) 1px 1px 2px;
-            background: $mainYellow;
-            padding: 1% 5%;
-            border: 0.6px solid black;
-        }
-        select {
-            outline: none;
-            border: 1px solid wheat;
-            border-radius: 1px;
-            padding: 2px 0; 
-            width: 90%;
-            font-family: 'Poppins', sans-serif;
-        }
-        .dollarValue {
-            color: $mainGray;
-            font-family: 'Poppins', sans-serif;
-            text-transform: capitalize;
-            border: 2px wheat solid;
-            padding: 2px;
-            width: 70%;
-        }
-        h2 {
-            font-weight: 400;
-            color: white;
-            text-shadow: black 2px 2px 3px;
-        }
-        button.submitBtn {
-            cursor: pointer;
-            transition: all 0.4s;
-            font-family: 'Poppins', sans-serif;
-            &:focus,
-            &:hover {
-                background: wheat;
-                color: black;
-            }
-        }
-        p.results,
-        button.submitBtn {
-            background: black;
-            color: white;
-            outline: 2px wheat solid;
-            padding: 1% 12%;
-            border: none;
-            font-size: 2rem;
-        }
-    }
-    .sell {
-        border: 0.8px $mainYellow solid;
-        background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.904), rgba(33, 31, 58, 0.795)), url('../assets/fiat.jpg');
-        background-size: cover;
-        background-position: center;
-    }
-    .buy {
-        border: 0.8px $mainGreen solid;
-        background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.815), rgba(33, 25, 109, 0.774)), url('../assets/crypto.jpg');
-        background-size: cover;
-        background-position: center;
-    }
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 70%;
+	width: 100%;
+	border-top: 8px double rgb(158, 133, 91);
+	.sell,
+	.buy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 3;
+		box-shadow: 10px 10px 20px rgb(75, 69, 57),
+			-20px -20px 20px rgb(250, 243, 227);
+		height: 80%;
+		width: 47%;
+		border-radius: 8px;
+		font-size: calc(1rem + 0.7vw);
+		* {
+			margin: 8px;
+			text-align: center;
+			border-radius: 8px;
+		}
+		label {
+			font-size: calc(1.8rem + 1vw);
+			text-shadow: rgb(73, 73, 36) 1px 1px 2px;
+			background: $mainYellow;
+			padding: 1% 5%;
+			border: 0.6px solid black;
+		}
+		select {
+			outline: none;
+			border: 1px solid wheat;
+			border-radius: 1px;
+			padding: 2px 0;
+			width: 90%;
+			font-family: 'Poppins', sans-serif;
+		}
+		.dollarValue {
+			color: $mainGray;
+			font-family: 'Poppins', sans-serif;
+			text-transform: capitalize;
+			border: 2px wheat solid;
+			padding: 2px;
+			width: 70%;
+		}
+		h2 {
+			font-weight: 400;
+			color: white;
+			text-shadow: black 2px 2px 3px;
+		}
+		button.submitBtn {
+			cursor: pointer;
+			transition: all 0.4s;
+			font-family: 'Poppins', sans-serif;
+			&:focus,
+			&:hover {
+				background: wheat;
+				color: black;
+			}
+		}
+		p.results,
+		button.submitBtn {
+			background: black;
+			color: white;
+			outline: 2px wheat solid;
+			padding: 1% 12%;
+			border: none;
+			font-size: 2rem;
+		}
+	}
+	.sell {
+		border: 0.8px $mainYellow solid;
+		background-image: linear-gradient(
+				to bottom,
+				rgba(226, 208, 168, 0.904),
+				rgba(33, 31, 58, 0.795)
+			),
+			url('../assets/fiat.jpg');
+		background-size: cover;
+		background-position: center;
+	}
+	.buy {
+		border: 0.8px $mainGreen solid;
+		background-image: linear-gradient(
+				to bottom,
+				rgba(208, 209, 214, 0.815),
+				rgba(33, 25, 109, 0.774)
+			),
+			url('../assets/crypto.jpg');
+		background-size: cover;
+		background-position: center;
+	}
 }
 
 footer {
-    background: black;
-    color: white;
-    text-align: center;
-    padding: 5px 0;
-    border-top: 1px double $mainYellow;
-    font-size: calc(1rem + 0.5vw);
-    .bmac,
-    .karan {
-        color: $mainGreen;
-    }
+	background: black;
+	color: white;
+	text-align: center;
+	padding: 5px 0;
+	border-top: 1px double $mainYellow;
+	font-size: calc(1rem + 0.5vw);
+	.bmac,
+	.karan {
+		color: $mainGreen;
+	}
+}
+
+.changeDropDown {
+	display: flex;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+input:checked + .slider {
+	background-color: #2196f3;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }
