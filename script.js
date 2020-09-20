@@ -6,6 +6,9 @@ const quickExg = {};
 
 
 
+// could hold objects with {symbol: and rate:}
+// let globalCrypto = [];
+
 // holds objects of name, symbol
 quickExg.symbol = [];
 
@@ -13,6 +16,7 @@ quickExg.apiKey = 'f92be607079263073b991b0fe5fa5e23';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
 quickExg.apiLive = 'http://api.coinlayer.com/api/live';
 
+// these solved the issue of the modal loading slowly
 quickExg.start = $('.start');
 quickExg.modal = $('.modalContainer');
 
@@ -21,10 +25,6 @@ quickExg.dollarSell = $('.dollarSell');
 
 quickExg.sellDropDown = $('.dropDown');
 quickExg.buyDropDown = $('.buyDropDown');
-
-quickExg.result = $('.results');
-
-
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
@@ -79,30 +79,30 @@ quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 	}).then((data) => {
 		//use symbol to access number value at symbol key CRYPTO ONLY
 		value = data.rates[symbol];
-		console.log(data);
 	});
 	// console.log(value); // works
 	return value;
 };
 
-// SUBMIT BUTTON
+// get exact user dollar from user 'input .dollarSell' and on button submitBtn
 quickExg.getUserAmount = function () {
 
 	quickExg.sell.on('submit', async () => {
 		// await e.preventDefault();
 		// Get user selection for buy currency type
-
 		const buyLongName = quickExg.buyDropDown.val();
-		// console.log(buyLongName); // works
+		console.log(buyLongName); // works
+
 		const buySymbol = quickExg.symbolConverter(buyLongName);
-		// console.log(buySymbol); // works
+		console.log(buySymbol);
 
 		const sellLongName = quickExg.sellDropDown.val();
-		// console.log(sellLongName); // works
-		const sellSymbol = quickExg.symbolConverter(sellLongName);
-		// console.log(sellSymbol); // works
+		console.log(sellLongName); // works
 
-		const rate = await quickExg.ratesData(sellSymbol, buySymbol);
+		const sellSymbol = quickExg.symbolConverter(sellLongName);
+		console.log(sellSymbol); // works
+
+		const rate = await quickExg.ratesData(sellSymbol);
 		console.log(rate); // works for crypto sell only
 
 		// const userAmt = quickExg.dollarSell.val();
@@ -110,22 +110,6 @@ quickExg.getUserAmount = function () {
 
 	});
 	// console.log(userAmt);
-};
-
-// Creating function to get input from user and display converted amount
-// quickExg.displayResult = (results) => {
-// 	//p tag gets the text from the userAmount function
-// 	quickExg.result.text(quickExg.getUserAmount(results));
-
-// };
-
-//populate dropdown with symbols from populateOptions
-quickExg.dropDownMenu = (currencyArray) => {
-	currencyArray.forEach((currency) => {
-		const result = $(`<option value='${currency}'>`).text(currency);
-		//TODO populate both dropdowns
-		quickExg.sellDropDown.append(result);
-	});
 };
 
 //getting all currency objects and making an array out of the symbols
@@ -180,18 +164,29 @@ quickExg.populateOptions = () => {
 	});
 };
 
-// Creating function to get input from user and display converted amount
-quickExg.displayResult = (results) => {
-	//p tag gets the text from the userAmount function
-	quickExg.result.text(quickExg.getUserAmount(results));
+//populate dropdown with symbols from populateOptions
+quickExg.dropDownMenu = (currencyArray) => {
+	currencyArray.forEach((currency) => {
+		const result = $(`<option value='${currency}'>`).text(currency);
+		//TODO populate both dropdowns
+		quickExg.sellDropDown.append(result);
+	});
+};
 
+// Creating function to get input from user and display converted amount
+quickExg.displayAmt = () => {
+	quickExg.sell.on('submit', function (e) {
+		e.preventDefault();
+		// $('.dollarBuy').attr('value', $('.dollarSell').val());
+		const sellValue = quickExg.dollarSell.val();
+	});
 };
 
 //INIT FUNCTION
 quickExg.init = () => {
 	quickExg.addStartButton();
 	quickExg.populateOptions();
-	quickExg.displayResult();
+	quickExg.displayAmt();
 	quickExg.getUserAmount();
 };
 
@@ -199,11 +194,6 @@ quickExg.init = () => {
 $(function () {
 	quickExg.init();
 });
-
-
-
-
-
 
 /*
 // NATIONAL CURR -> CRYPTO
