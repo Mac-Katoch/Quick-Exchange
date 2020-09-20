@@ -33,7 +33,8 @@ main {
     height: 70%;
     width: 100%;
     border-top: 8px double rgb(158, 133, 91);
-    form {
+    .sell,
+    .buy {
         display: flex;
         flex-direction: column;
         justify-content: center;

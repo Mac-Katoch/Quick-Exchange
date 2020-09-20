@@ -26,34 +26,34 @@
 
 		<main class="wrapper">
 			<h1>Quick Exg</h1>
-			<div class="mainDisplay mainContent">
-				<form class="sell" id="sell" action="">
+			<form class="mainDisplay mainContent" action="">
+				<div class="sell" id="sell">
 					<label for="sellCurrency">Currency You're Selling:</label>
 					<div class="selectDiv">
-						<select class="dropDown" name="sellCurrency" id="sellCurrency">
+						<select class="dropDown sellDropDown" name="sellCurrency" id="sellCurrency">
 							<option value="CAD"></option>
 						</select>
 					</div>
 					<input class="dollarValue dollarSell" type="text" value="" placeholder="Enter Exact Amount"></input>
-					<h2>Ready?</h2>
+					<!-- <h2>Ready?</h2> -->
 					<button class="submitBtn" type="submit">Convert</button>
 					<!-- Exchange -->
-				</form>
+				</div>
 
-				<form class="buy" action="submit">
+				<div class="buy">
 					<label for="buyCurrency">Currency You're Buying:</label>
 					<div class="selectDiv">
-						<select class="dropDown" name="buyCurrency" id="buyCurrency">
+						<select class="dropDown buyDropDown" name="buyCurrency" id="buyCurrency">
 							<option value="CAD"></option>
 						</select>
 						</div>
-					<input class="dollarValue dollarBuy" type="text" placeholder="Converted value" disabled></input>
+					<!-- <input class="dollarValue dollarBuy" type="text" placeholder="Converted value" disabled></input> -->
 
 					<h2>Result:</h2>
 					<p class="results" style="font-size: 2rem">00.00</p>
 					<!-- Exchange -->
-				</form>
-			</div>
+				</div>
+			</form>
 		</main>
 		<footer>
 			copyrite &copy; <a class="bmac" href="http://www.brennamacquarrie.com/">Brenna MacQuarrie</a> & <a class="karan" href="https://twitter.com/katochwatch">Karan Katoch</a> for Juno College 2020
