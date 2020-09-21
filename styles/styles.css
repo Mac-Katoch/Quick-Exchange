@@ -366,7 +366,7 @@ a {
   position: relative;
   display: inline-block;
   width: 48px;
-  height: 20px;
+  height: 21px;
   margin: auto 8px;
   font-size: calc(1rem + 0.3vw);
 }
