@@ -95,7 +95,12 @@ quickExg.getUserAmount = function () {
 				const rate = await quickExg.ratesData(buySymbol);
 				const userAmt = quickExg.dollarSell.val();
 				const converted = (exgRate) => {
-					return userAmt / exgRate;
+					// Error handling to avoid 'Infinity' output
+					if (exgRate === 0) {
+						return 0;
+					} else {
+						return userAmt / exgRate;
+					}
 				};
 				$('.results').text(converted(rate));
 			}
