@@ -4,32 +4,36 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quick Exchange</title>
-		<!-- link css -->
-		<link rel="stylesheet" href="./styles/styles.css" />
 		<!-- link fonts -->
 		<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,400&family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
 		<!-- link favicon -->
 		<link type="image/ico" href="./favicon_io-4/favicon.ico" rel="icon">
 		<!-- link icons -->
 		<script src="https://kit.fontawesome.com/4fba6b96fc.js" crossorigin="anonymous"></script>
+		<!-- link css -->
+		<link rel="stylesheet" href="./styles/styles.css" />
 	</head>
 
 	<body>
 
-		<div class="modalContainer">
+		<!-- <div class="modalContainer">
 			<div class="modalCenter">
 				<p>the fastest way to see what you've got, and better yet...</p>
 				<p>what you <i>could</i> have</p>
 				<button class="start">Start</button>
 			</div>
-		</div>
+		</div> -->
 
 		<main class="wrapper">
 			<h1>Quick Exg</h1>
 			<form class="mainDisplay mainContent" action="submit">
-				<div class="sell" id="sell">
-					<label for="sellCurrency">Currency You're Selling:</label>
 
+				<!-- SELL SIDE -->
+				<div class="sell" id="sell">
+					<!-- SELLform title -->
+					<label class="labelOne" for="sellCurrency">Currency You're Selling:</label>
+
+					<!-- SELLform dropdown switch -->
 					<div class="changeDropDown">
 						<p class="fiatSwitch">Fiat</p>
 						<label class="switch">
@@ -39,21 +43,25 @@
 						<p class="cryptoSwitch">Crypto</p>
 					</div>
 
+					<!-- SELLform dropdown menu -->
 					<div class="selectDiv">
 						<select class="dropDown sellDropDown" name="sellCurrency" id="sellCurrency">
 							<option class="option" value="CAD">Make a Selection!</option>
 						</select>
 					</div>
 
+					<!-- SELLform userinput -->
 					<input class="dollarValue dollarSell" type="text" value="" placeholder="$$.$$"></input>
-					<!-- <h2>Ready?</h2> -->
+
+					<!-- SELLform submit button -->
 					<button class="submitBtn" type="submit">Convert</button>
 					<!-- Exchange -->
 				</div>
 
+				<!-- BUY SIDE -->
 				<div class="buy">
-					<label for="buyCurrency">Currency You're Buying:</label>
-						
+					<label class="labelOne" for="buyCurrency">Currency You're Buying:</label>
+					<!-- BUYform title -->
 					<div class="selectDiv">
 						<select class="dropDown buyDropDown" name="buyCurrency" id="buyCurrency">
 							<option value="CAD">Make a Selection</option>

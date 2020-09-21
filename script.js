@@ -1,6 +1,5 @@
 const quickExg = {};
 
-//TODO >>>> fix the friggin checkbox styling dude 
 //TODO >>>> error handling for entering anything other than a number
 //TODO >>>> find a better way to execute the dropdown population????
 //TODO >>>> make the text beside the checkbox glow on select

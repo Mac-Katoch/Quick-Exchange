@@ -354,15 +354,15 @@ a {
   color: rgba(184, 183, 183, 0.8);
 }
 
-.changeDropDown .switch {
+.changeDropDown label.switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
-  margin: 0;
+  margin: auto 8px;
 }
 
-.changeDropDown .switch .switch input {
+.changeDropDown label.switch .sellCheckbox {
   opacity: 0;
   width: 0;
   height: 0;
@@ -448,8 +448,8 @@ input:checked + .slider:before {
 
 /* Landscape phones and down */
 body {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fff0d3), to(#6b624e));
-  background-image: linear-gradient(180deg, #fff0d3 50%, #6b624e 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fcf4e5), to(#6b624e));
+  background-image: linear-gradient(180deg, #fcf4e5 50%, #6b624e 100%);
   position: relative;
   height: 100vh;
 }
@@ -517,11 +517,11 @@ main h1 {
   font-size: calc(1rem + 0.7vw);
 }
 
-.mainDisplay .sell label,
-.mainDisplay .buy label {
+.mainDisplay .sell .labelOne,
+.mainDisplay .buy .labelOne {
   font-size: calc(1.8rem + 1vw);
   text-shadow: #494924 1px 1px 2px;
-  background: #fff0d3;
+  background: #fcf4e5;
   padding: 1% 5%;
   border: 0.6px solid black;
   margin: 8px;
@@ -567,6 +567,7 @@ main h1 {
   cursor: pointer;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  border-radius: 8px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -583,16 +584,15 @@ main h1 {
 .mainDisplay .buy button.submitBtn {
   background: black;
   color: white;
-  outline: 2px wheat solid;
   padding: 1% 12%;
-  border: none;
+  border: 2px wheat solid;
+  border-radius: 8px;
   font-size: 2rem;
   margin: 8px;
-  border-radius: 8px;
 }
 
 .mainDisplay .sell {
-  border: 0.8px #fff0d3 solid;
+  border: 0.8px #fcf4e5 solid;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(226, 208, 168, 0.904)), to(rgba(33, 31, 58, 0.795))), url("../assets/fiat.jpg");
   background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.904), rgba(33, 31, 58, 0.795)), url("../assets/fiat.jpg");
   background-size: cover;
@@ -612,7 +612,7 @@ footer {
   color: white;
   text-align: center;
   padding: 5px 0;
-  border-top: 1px double #fff0d3;
+  border-top: 1px double #fcf4e5;
   font-size: calc(1rem + 0.5vw);
 }
 
