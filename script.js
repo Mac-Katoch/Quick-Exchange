@@ -1,16 +1,12 @@
 const quickExg = {};
 
 //TODO >>>> error handling for entering anything other than a number
-//TODO >>>> find a better way to execute the dropdown population????
-//TODO >>>> make the text beside the checkbox glow on select
 //TODO >>>> alert if they dont enter any stuff 
 
-// holds objects of name, symbol
-quickExg.symbol = [];
+//TODO >>>> find a better way to execute the dropdown population????
 
-// holds array of long names
-quickExg.cryptoNamesArray = [];
-quickExg.fiatNamesArray = [];
+//TODO >>>> make the text beside the checkbox glow on select
+
 
 quickExg.apiKey = 'f92be607079263073b991b0fe5fa5e23';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
@@ -24,6 +20,13 @@ quickExg.dollarSell = $('.dollarSell');
 
 quickExg.sellDropDown = $('.sellDropDown');
 quickExg.buyDropDown = $('.buyDropDown');
+
+// holds objects of name, symbol
+quickExg.symbol = [];
+
+// holds array of long names
+quickExg.cryptoNamesArray = [];
+quickExg.fiatNamesArray = [];
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {

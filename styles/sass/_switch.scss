@@ -10,9 +10,10 @@
 	label.switch {
 		position: relative;
 		display: inline-block;
-		width: 60px;
-        height: 34px;
-        margin: auto 8px;
+		width: 48px;
+        height: 20px;
+		margin: auto 8px;
+		font-size: calc(1rem + 0.3vw);
 		.sellCheckbox {
 			opacity: 0;
 			width: 0;
@@ -39,10 +40,10 @@
 .slider:before {
 	position: absolute;
 	content: '';
-	height: 26px;
-	width: 26px;
-	left: 4px;
-	bottom: 4px;
+	height: 17px;
+	width: 17px;
+	left: 2px;
+	bottom: 2px;
 	border-radius: 50%;
 	background-color: white;
 	-webkit-transition: 0.4s;

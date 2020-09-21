@@ -357,9 +357,10 @@ a {
 .changeDropDown label.switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 48px;
+  height: 20px;
   margin: auto 8px;
+  font-size: calc(1rem + 0.3vw);
 }
 
 .changeDropDown label.switch .sellCheckbox {
@@ -384,10 +385,10 @@ a {
 .slider:before {
   position: absolute;
   content: '';
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 17px;
+  width: 17px;
+  left: 2px;
+  bottom: 2px;
   border-radius: 50%;
   background-color: white;
   -webkit-transition: 0.4s;
@@ -416,6 +417,7 @@ input:checked + .slider:before {
     height: 100%;
   }
   body main {
+    height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -423,7 +425,6 @@ input:checked + .slider:before {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: 100%;
   }
   body .mainDisplay {
     -webkit-box-orient: vertical;
@@ -519,7 +520,7 @@ main h1 {
 
 .mainDisplay .sell .labelOne,
 .mainDisplay .buy .labelOne {
-  font-size: calc(1.8rem + 1vw);
+  font-size: calc(1.6rem + 1vw);
   text-shadow: #494924 1px 1px 2px;
   background: #fcf4e5;
   padding: 1% 5%;

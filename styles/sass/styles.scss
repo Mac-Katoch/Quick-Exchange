@@ -52,7 +52,7 @@ main {
 		border-radius: 8px;
 		font-size: calc(1rem + 0.7vw);		
 		.labelOne {
-			font-size: calc(1.8rem + 1vw);
+			font-size: calc(1.6rem + 1vw);
 			text-shadow: rgb(73, 73, 36) 1px 1px 2px;
 			background: $mainYellow;
 			padding: 1% 5%;
@@ -60,7 +60,6 @@ main {
 			margin: 8px;
 			border-radius: 8px;
 			text-align: center;
-
 		}
 		select {
 			outline: none;
@@ -72,7 +71,6 @@ main {
 			margin: 8px;
 			border-radius: 1px;
 			text-align: center;
-
 		}
 		.dollarValue {
 			color: $mainGray;
