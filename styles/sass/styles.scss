@@ -1,18 +1,15 @@
+$mainYellow: rgba(0, 0, 0, 0.7);
+$mainGreen: #96afa3;
+$mainGray: rgba(92, 91, 91, 0.6);
+$secondYellow: rgb(250, 243, 183);
 @import 'setup';
 @import 'menu';
 @import 'switch';
 @import 'mediaQueries';
 
-$mainYellow: rgb(252, 244, 229);
-$mainGreen: #96afa3;
-$mainGray: rgba(128, 128, 128, 0.6);
 
 body {
-	background-image: linear-gradient(
-		180deg,
-		$mainYellow 50%,
-		rgb(107, 98, 78) 100%
-	);
+	background: rgb(86, 95, 97);
 	position: relative;
 	height: 100vh;
 }
@@ -20,7 +17,7 @@ main {
 	h1 {
 		font-size: calc(5rem + 4vw);
 		text-align: center;
-		text-shadow: rgb(73, 73, 36) 2px 2px 5px;
+		text-shadow: rgb(158, 158, 158) 2px 2px 5px;
 		margin: 0;
 		z-index: 999;
 	}
@@ -34,36 +31,42 @@ main {
 .mainDisplay {
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
-	height: 70%;
+	padding-top: 70px;
 	width: 100%;
-	border-top: 8px double rgb(158, 133, 91);
+	border-top: 8px double white;
 	.sell,
 	.buy {
+		padding: 70px 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		z-index: 3;
-		box-shadow: 10px 10px 20px rgb(75, 69, 57),
-			-20px -20px 20px rgb(250, 243, 227);
-		height: 80%;
-		width: 47%;
-		border-radius: 8px;
-		font-size: calc(1rem + 0.7vw);		
-		.labelOne {
-			font-size: calc(1.6rem + 1vw);
-			text-shadow: rgb(73, 73, 36) 1px 1px 2px;
-			background: $mainYellow;
-			padding: 1% 5%;
-			border: 0.6px solid black;
-			margin: 8px;
-			border-radius: 8px;
-			text-align: center;
-		}
+		width: 48%;
+		
+		border-radius: 20px;
+		background: linear-gradient(135deg, rgba(0,0,0,0.22), rgba(255,255,255,0.25));
+        box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+        -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+		
+		font-size: calc(1rem + 0.7vw);	
+		.labelOneDiv {
+			flex-grow: 1;
+			.labelOne {
+				color: white;
+				font-size: calc(1.6rem + 1vw);
+				text-shadow: rgb(158, 158, 158) 1px 1px 2px;
+				background: $mainYellow;
+				padding: 1% 5%;
+				border: 1px solid black;
+				border-radius: 8px;
+				text-align: center;
+				display: inline-block;
+			}
+		}	
 		select {
 			outline: none;
-			border: 1px solid wheat;
+			border: 1px solid black;
 			border-radius: 1px;
 			padding: 2px 0;
 			width: 90%;
@@ -76,9 +79,10 @@ main {
 			color: $mainGray;
 			font-family: 'Poppins', sans-serif;
 			text-transform: capitalize;
-			border: 2px wheat solid;
+			border: 1px black solid;
 			padding: 2px;
 			width: 30%;
+			height: 30px;
 			margin: 8px;
 			border-radius: 8px;
 			text-align: center;
@@ -87,6 +91,8 @@ main {
 			font-weight: 400;
 			color: white;
 			text-shadow: black 2px 2px 3px;
+			height: 30px;
+			margin: 8px;
 		}
 		button.submitBtn {
 			cursor: pointer;
@@ -96,42 +102,20 @@ main {
 			font-family: 'Poppins', sans-serif;
 			&:focus,
 			&:hover {
-				background: wheat;
+				background: $secondYellow;
 				color: black;
 			}
 		}
 		p.results,
 		button.submitBtn {
-			background: black;
+			background: rgb(168, 168, 168);
 			color: white;
 			padding: 1% 12%;
-			border: 2px wheat solid;
+			border: 1px black solid;
 			border-radius: 8px;
 			font-size: 2rem;
 			margin: 8px;
 		}
-	}
-	.sell {
-		border: 0.8px $mainYellow solid;
-		background-image: linear-gradient(
-				to bottom,
-				rgba(226, 208, 168, 0.904),
-				rgba(33, 31, 58, 0.795)
-			),
-			url('../assets/fiat.jpg');
-		background-size: cover;
-		background-position: center;
-	}
-	.buy {
-		border: 0.8px $mainGreen solid;
-		background-image: linear-gradient(
-				to bottom,
-				rgba(208, 209, 214, 0.815),
-				rgba(33, 25, 109, 0.774)
-			),
-			url('../assets/crypto.jpg');
-		background-size: cover;
-		background-position: center;
 	}
 }
 
@@ -144,6 +128,6 @@ footer {
 	font-size: calc(1rem + 0.5vw);
 	.bmac,
 	.karan {
-		color: $mainGreen;
+		color: #3dff5e;
 	}
 }

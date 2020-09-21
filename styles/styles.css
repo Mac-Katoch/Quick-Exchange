@@ -449,8 +449,7 @@ input:checked + .slider:before {
 
 /* Landscape phones and down */
 body {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fcf4e5), to(#6b624e));
-  background-image: linear-gradient(180deg, #fcf4e5 50%, #6b624e 100%);
+  background: #565f61;
   position: relative;
   height: 100vh;
 }
@@ -475,7 +474,7 @@ main {
 main h1 {
   font-size: calc(5rem + 4vw);
   text-align: center;
-  text-shadow: #494924 2px 2px 5px;
+  text-shadow: #9e9e9e 2px 2px 5px;
   margin: 0;
   z-index: 999;
 }
@@ -486,16 +485,14 @@ main h1 {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 70%;
+  padding-top: 70px;
   width: 100%;
-  border-top: 8px double #9e855b;
+  border-top: 8px double white;
 }
 
 .mainDisplay .sell,
 .mainDisplay .buy {
+  padding: 70px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -510,30 +507,38 @@ main h1 {
       -ms-flex-align: center;
           align-items: center;
   z-index: 3;
-  -webkit-box-shadow: 10px 10px 20px #4b4539, -20px -20px 20px #faf3e3;
-          box-shadow: 10px 10px 20px #4b4539, -20px -20px 20px #faf3e3;
-  height: 80%;
-  width: 47%;
-  border-radius: 8px;
+  width: 48%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
+  -webkit-box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+          box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
   font-size: calc(1rem + 0.7vw);
 }
 
-.mainDisplay .sell .labelOne,
-.mainDisplay .buy .labelOne {
+.mainDisplay .sell .labelOneDiv,
+.mainDisplay .buy .labelOneDiv {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.mainDisplay .sell .labelOneDiv .labelOne,
+.mainDisplay .buy .labelOneDiv .labelOne {
+  color: white;
   font-size: calc(1.6rem + 1vw);
-  text-shadow: #494924 1px 1px 2px;
-  background: #fcf4e5;
+  text-shadow: #9e9e9e 1px 1px 2px;
+  background: rgba(0, 0, 0, 0.7);
   padding: 1% 5%;
-  border: 0.6px solid black;
-  margin: 8px;
+  border: 1px solid black;
   border-radius: 8px;
   text-align: center;
+  display: inline-block;
 }
 
 .mainDisplay .sell select,
 .mainDisplay .buy select {
   outline: none;
-  border: 1px solid wheat;
+  border: 1px solid black;
   border-radius: 1px;
   padding: 2px 0;
   width: 90%;
@@ -545,12 +550,13 @@ main h1 {
 
 .mainDisplay .sell .dollarValue,
 .mainDisplay .buy .dollarValue {
-  color: rgba(128, 128, 128, 0.6);
+  color: rgba(92, 91, 91, 0.6);
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
-  border: 2px wheat solid;
+  border: 1px black solid;
   padding: 2px;
   width: 30%;
+  height: 30px;
   margin: 8px;
   border-radius: 8px;
   text-align: center;
@@ -561,6 +567,8 @@ main h1 {
   font-weight: 400;
   color: white;
   text-shadow: black 2px 2px 3px;
+  height: 30px;
+  margin: 8px;
 }
 
 .mainDisplay .sell button.submitBtn,
@@ -575,7 +583,7 @@ main h1 {
 .mainDisplay .sell button.submitBtn:focus, .mainDisplay .sell button.submitBtn:hover,
 .mainDisplay .buy button.submitBtn:focus,
 .mainDisplay .buy button.submitBtn:hover {
-  background: wheat;
+  background: #faf3b7;
   color: black;
 }
 
@@ -583,29 +591,13 @@ main h1 {
 .mainDisplay .sell button.submitBtn,
 .mainDisplay .buy p.results,
 .mainDisplay .buy button.submitBtn {
-  background: black;
+  background: #a8a8a8;
   color: white;
   padding: 1% 12%;
-  border: 2px wheat solid;
+  border: 1px black solid;
   border-radius: 8px;
   font-size: 2rem;
   margin: 8px;
-}
-
-.mainDisplay .sell {
-  border: 0.8px #fcf4e5 solid;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(226, 208, 168, 0.904)), to(rgba(33, 31, 58, 0.795))), url("../assets/fiat.jpg");
-  background-image: linear-gradient(to bottom, rgba(226, 208, 168, 0.904), rgba(33, 31, 58, 0.795)), url("../assets/fiat.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.mainDisplay .buy {
-  border: 0.8px #96afa3 solid;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 209, 214, 0.815)), to(rgba(33, 25, 109, 0.774))), url("../assets/crypto.jpg");
-  background-image: linear-gradient(to bottom, rgba(208, 209, 214, 0.815), rgba(33, 25, 109, 0.774)), url("../assets/crypto.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 footer {
@@ -613,11 +605,11 @@ footer {
   color: white;
   text-align: center;
   padding: 5px 0;
-  border-top: 1px double #fcf4e5;
+  border-top: 1px double rgba(0, 0, 0, 0.7);
   font-size: calc(1rem + 0.5vw);
 }
 
 footer .bmac,
 footer .karan {
-  color: #96afa3;
+  color: #3dff5e;
 }
