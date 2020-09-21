@@ -354,6 +354,14 @@ a {
   color: rgba(184, 183, 183, 0.8);
 }
 
+.changeDropDown p.cryptoColor {
+  color: #2196f3;
+}
+
+.changeDropDown p.fiatColor {
+  color: #24b364;
+}
+
 .changeDropDown label.switch {
   position: relative;
   display: inline-block;
@@ -535,8 +543,18 @@ main h1 {
   display: inline-block;
 }
 
-.mainDisplay .sell select,
-.mainDisplay .buy select {
+.mainDisplay .sell .selectDiv,
+.mainDisplay .buy .selectDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mainDisplay .sell .selectDiv select,
+.mainDisplay .buy .selectDiv select {
   outline: none;
   border: 1px solid black;
   border-radius: 1px;
@@ -577,14 +595,21 @@ main h1 {
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
   border-radius: 8px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   font-family: 'Poppins', sans-serif;
 }
 
 .mainDisplay .sell button.submitBtn:focus, .mainDisplay .sell button.submitBtn:hover,
 .mainDisplay .buy button.submitBtn:focus,
 .mainDisplay .buy button.submitBtn:hover {
-  background: #faf3b7;
-  color: black;
+  background: #333;
+}
+
+.mainDisplay .sell button.submitBtn:active,
+.mainDisplay .buy button.submitBtn:active {
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
 }
 
 .mainDisplay .sell p.results,
@@ -602,7 +627,7 @@ main h1 {
 
 footer {
   background: black;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
   padding: 5px 0;
   border-top: 1px double rgba(0, 0, 0, 0.7);
@@ -611,5 +636,5 @@ footer {
 
 footer .bmac,
 footer .karan {
-  color: #3dff5e;
+  color: rgba(61, 255, 94, 0.6);
 }

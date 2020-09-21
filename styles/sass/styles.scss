@@ -7,7 +7,6 @@ $secondYellow: rgb(250, 243, 183);
 @import 'switch';
 @import 'mediaQueries';
 
-
 body {
 	background: rgb(86, 95, 97);
 	position: relative;
@@ -43,13 +42,17 @@ main {
 		align-items: center;
 		z-index: 3;
 		width: 48%;
-		
+
 		border-radius: 20px;
-		background: linear-gradient(135deg, rgba(0,0,0,0.22), rgba(255,255,255,0.25));
-        box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-        -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
-		
-		font-size: calc(1rem + 0.7vw);	
+		background: linear-gradient(
+			135deg,
+			rgba(0, 0, 0, 0.22),
+			rgba(255, 255, 255, 0.25)
+		);
+		box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+			-8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+
+		font-size: calc(1rem + 0.7vw);
 		.labelOneDiv {
 			flex-grow: 1;
 			.labelOne {
@@ -63,17 +66,22 @@ main {
 				text-align: center;
 				display: inline-block;
 			}
-		}	
-		select {
-			outline: none;
-			border: 1px solid black;
-			border-radius: 1px;
-			padding: 2px 0;
-			width: 90%;
-			font-family: 'Poppins', sans-serif;
-			margin: 8px;
-			border-radius: 1px;
-			text-align: center;
+		}
+
+		.selectDiv {
+			display: flex;
+			justify-content: center;
+			select {
+				outline: none;
+				border: 1px solid black;
+				border-radius: 1px;
+				padding: 2px 0;
+				width: 90%;
+				font-family: 'Poppins', sans-serif;
+				margin: 8px;
+				border-radius: 1px;
+				text-align: center;
+			}
 		}
 		.dollarValue {
 			color: $mainGray;
@@ -98,17 +106,22 @@ main {
 			cursor: pointer;
 			transition: all 0.4s;
 			border-radius: 8px;
+			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
 
 			font-family: 'Poppins', sans-serif;
 			&:focus,
 			&:hover {
-				background: $secondYellow;
-				color: black;
+				background: #333;
+				// color: white;
+			}
+
+			&:active {
+				box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
 			}
 		}
 		p.results,
 		button.submitBtn {
-			background: rgb(168, 168, 168);
+			background: #a8a8a8;
 			color: white;
 			padding: 1% 12%;
 			border: 1px black solid;
@@ -121,13 +134,13 @@ main {
 
 footer {
 	background: black;
-	color: white;
+	color: rgba(255, 255, 255, 0.6);
 	text-align: center;
 	padding: 5px 0;
 	border-top: 1px double $mainYellow;
 	font-size: calc(1rem + 0.5vw);
 	.bmac,
 	.karan {
-		color: #3dff5e;
+		color: rgba(61, 255, 94, 0.6);
 	}
 }

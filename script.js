@@ -1,12 +1,6 @@
 const quickExg = {};
 
-//TODO >>>> error handling for entering anything other than a number
-//TODO >>>> alert if they dont enter any stuff 
-
 //TODO >>>> find a better way to execute the dropdown population????
-
-//TODO >>>> make the text beside the checkbox glow on select
-
 
 quickExg.apiKey = 'f92be607079263073b991b0fe5fa5e23';
 quickExg.apiList = 'http://api.coinlayer.com/api/list';
@@ -20,6 +14,10 @@ quickExg.dollarSell = $('.dollarSell');
 
 quickExg.sellDropDown = $('.sellDropDown');
 quickExg.buyDropDown = $('.buyDropDown');
+
+quickExg.switchBox = $('.sellCheckbox');
+quickExg.fiatSwitch = $('.fiatSwitch');
+quickExg.cryptoSwitch = $('.cryptoSwitch');
 
 // holds objects of name, symbol
 quickExg.symbol = [];
@@ -80,28 +78,52 @@ quickExg.getUserAmount = function () {
 		const sellLongName = quickExg.sellDropDown.val();
 
 		const sellSymbol = quickExg.symbolConverter(sellLongName);
-		
-		if ($('.sellCheckbox').is(':checked')) {
-			// crypto to crypto conversion if checked
-			const rateBuy = await quickExg.ratesData(buySymbol);
-			const rateSell = await quickExg.ratesData(sellSymbol);
-			const cryptoToCrypto = rateSell / rateBuy;
-			const userAmt = quickExg.dollarSell.val();
-			const converted = () => {
-				return userAmt * cryptoToCrypto;
-			}
-			$('.results').text(converted());
-		} else {
-			// fiat to crypto
-			const rate = await quickExg.ratesData(buySymbol);
-			const userAmt = quickExg.dollarSell.val();
-			const converted = (exgRate) => {
-			return userAmt / exgRate;
-			}
-		$('.results').text(converted(rate));
 
+		if (buySymbol && sellSymbol) {
+			if ($('.sellCheckbox').is(':checked')) {
+				// crypto to crypto conversion if checked
+				const rateBuy = await quickExg.ratesData(buySymbol);
+				const rateSell = await quickExg.ratesData(sellSymbol);
+				const cryptoToCrypto = rateSell / rateBuy;
+				const userAmt = quickExg.dollarSell.val();
+				const converted = () => {
+					return userAmt * cryptoToCrypto;
+				};
+				$('.results').text(converted());
+			} else {
+				// fiat to crypto
+				const rate = await quickExg.ratesData(buySymbol);
+				const userAmt = quickExg.dollarSell.val();
+				const converted = (exgRate) => {
+					return userAmt / exgRate;
+				};
+				$('.results').text(converted(rate));
+			}
+		} else if (!buySymbol && sellSymbol) {
+			swal({
+				title: "Please pick a currency you're buying",
+				button: 'Okay',
+			});
+		} else if (!sellSymbol && buySymbol) {
+			swal({
+				title: "Please pick a currency you're selling",
+				button: 'Okay',
+			});
+		} else {
+			swal({
+				title: 'Please fill out form',
+				button: 'Okay',
+			});
 		}
 		//show in the result box, the conversion from crpto sell to fiat buy
+	});
+};
+
+// Changing switch words styling
+quickExg.switchColor = () => {
+	$('.sellCheckbox').on('change', () => {
+		quickExg.cryptoSwitch.toggleClass('cryptoColor');
+		quickExg.fiatSwitch.toggleClass('fiatColor');
 	});
 };
 
@@ -160,7 +182,6 @@ quickExg.populateOptions = () => {
 
 //populate dropdown with symbols from populateOptions
 quickExg.sellDropDownMenu = function () {
-
 	$('.sellCheckbox').on('change', function () {
 		quickExg.sellDropDown.empty();
 		if ($(this).is(':checked')) {
@@ -201,10 +222,10 @@ quickExg.init = () => {
 	quickExg.populateOptions();
 	quickExg.displayAmt();
 	quickExg.getUserAmount();
+	quickExg.switchColor();
 };
 
 //DOCUMENT READY FUNCTION
 $(function () {
 	quickExg.init();
 });
-

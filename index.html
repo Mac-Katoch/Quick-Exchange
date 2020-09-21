@@ -36,23 +36,23 @@
 					</div>
 					<!-- SELLform dropdown switch -->
 					<div class="changeDropDown">
-						<p class="fiatSwitch">Fiat</p>
+						<p class="fiatSwitch">National</p>
 						<label class="switch">
 							<input type="checkbox" class="sellCheckbox" checked>
 							<span class="slider"></span>
 						</label>
-						<p class="cryptoSwitch">Crypto</p>
+						<p class="cryptoSwitch cryptoColor">Crypto</p>
 					</div>
 
 					<!-- SELLform dropdown menu -->
 					<div class="selectDiv">
 						<select class="dropDown sellDropDown" name="sellCurrency" id="sellCurrency">
-							<option class="option" value="CAD">Make a Selection!</option>
+							<option class="option" value="CAD">Make a Selection</option>
 						</select>
 					</div>
 
 					<!-- SELLform userinput -->
-					<input class="dollarValue dollarSell" type="text" value="" placeholder="$$.$$"></input>
+					<input class="dollarValue dollarSell" type="number" value="" placeholder="$$.$$" required></input>
 
 					<!-- SELLform submit button -->
 					<button class="submitBtn" type="submit">Convert</button>
@@ -62,7 +62,7 @@
 				<!-- BUY SIDE -->
 				<div class="buy">
 					<div class="labelOneDiv">
-						<label class="labelOne" for="buyCurrency">Currency You're Buying:</label>
+						<label class="labelOne" for="buyCurrency">Crypto You're Buying:</label>
 					</div>
 
 					<!-- BUYform title -->
@@ -73,7 +73,7 @@
 					</div>
 					<!-- BUYform result display -->
 					<h2>Result:</h2>
-					<p class="results" style="font-size: 2rem">$$.$$</p>
+					<p class="results">$$.$$</p>
 				</div>
 			</form>
 		</main>
@@ -90,5 +90,9 @@
 		></script>
 		<!-- JS -->
 		<script src="script.js"></script>
+		 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+
+
 	</body>
 </html>
