@@ -69,7 +69,8 @@ quickExg.ratesData = async function (symbol, targetFiat = 'USD') {
 
 // get exact user dollar from user 'input .dollarSell' and on button submitBtn
 quickExg.getUserAmount = function () {
-	quickExg.sell.on('submit', async () => {
+	quickExg.sell.on('submit', async (e) => {
+		e.preventDefault();
 		// Get user selection for buy currency type
 		const buyLongName = quickExg.buyDropDown.val();
 
@@ -212,20 +213,20 @@ quickExg.buyDropDownMenu = function (currencyArray) {
 	});
 };
 
-// Creating function to get input from user and display converted amount
-quickExg.displayAmt = () => {
-	quickExg.sell.on('submit', function (e) {
-		e.preventDefault();
-		// const sellValue = quickExg.dollarSell.val();
-	});
-};
+// // Creating function to get input from user and display converted amount
+// quickExg.displayAmt = () => {
+// 	quickExg.sell.on('submit', function (e) {
+// 		e.preventDefault();
+// 		// const sellValue = quickExg.dollarSell.val();
+// 	});
+// };
 
 //INIT FUNCTION
 quickExg.init = () => {
 	quickExg.addStartButton();
 	quickExg.sellDropDownMenu();
 	quickExg.populateOptions();
-	quickExg.displayAmt();
+	// quickExg.displayAmt();
 	quickExg.getUserAmount();
 	quickExg.switchColor();
 };
