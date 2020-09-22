@@ -3,8 +3,8 @@ const quickExg = {};
 //TODO >>>> find a better way to execute the dropdown population????
 
 quickExg.apiKey = 'f92be607079263073b991b0fe5fa5e23';
-quickExg.apiList = 'http://api.coinlayer.com/api/list';
-quickExg.apiLive = 'http://api.coinlayer.com/api/live';
+quickExg.apiList = 'https://api.coinlayer.com/api/list';
+quickExg.apiLive = 'https://api.coinlayer.com/api/live';
 
 quickExg.start = $('.start');
 quickExg.modal = $('.modalContainer');
