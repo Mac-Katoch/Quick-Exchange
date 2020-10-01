@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quick Exchange</title>
 		<!-- link fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,400&family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,400&family=Major+Mono+Display&family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
 		<!-- link favicon -->
 		<link type="image/ico" href="./favicon_io-6/favicon.ico" rel="icon">
 		<!-- link icons -->
@@ -18,8 +18,8 @@
 
 		<div class="modalContainer">
 			<div class="modalCenter">
-				<p>the fastest way to see what you've got, and better yet...</p>
-				<p>what you <i>could</i> have</p>
+				<p>the fastest way to see what you've got and better yet</p>
+				<p class="modalAltText">what you <i>could</i> have</p>
 				<button class="start">Start</button>
 			</div>
 		</div>
@@ -32,13 +32,13 @@
 				<div class="sell" id="sell">
 					<!-- SELLform title -->
 					<div class="labelOneDiv">
-						<label class="labelOne" for="sellCurrency">Currency You're Selling:</label>
+						<label class="labelOne" for="sellCurrency" aria-label="click to select the currency you are selling">Currency You're Selling:</label>
 					</div>
 					<!-- SELLform dropdown switch -->
 					<div class="changeDropDown">
 						<p class="fiatSwitch">National</p>
 						<label class="switch">
-							<input type="checkbox" class="sellCheckbox" checked>
+							<input aria-label="click to change to national currencies" type="checkbox" class="sellCheckbox" checked>
 							<span class="slider"></span>
 						</label>
 						<p class="cryptoSwitch cryptoColor">Crypto</p>
@@ -50,13 +50,15 @@
 							<option class="option" value="CAD">Make a Selection</option>
 						</select>
 					</div>
-
-					<!-- SELLform userinput -->
-					<input class="dollarValue dollarSell" type="number" value="" placeholder="$$.$$" required></input>
-
-					<!-- SELLform submit button -->
-					<button class="submitBtn" type="submit">Convert</button>
-					<!-- Exchange -->
+					
+					<div class="flexRow">
+						<!-- SELLform userinput -->
+						<input class="dollarValue dollarSell" type="number" value="" placeholder="$$.$$" required></input>
+	
+						<!-- SELLform submit button -->
+						<button class="submitBtn" type="submit">Convert</button>
+						<!-- Exchange -->
+					</div>
 				</div>
 
 				<!-- BUY SIDE -->
@@ -67,13 +69,15 @@
 
 					<!-- BUYform title -->
 					<div class="selectDiv">
-						<select class="dropDown buyDropDown" name="buyCurrency" id="buyCurrency">
+						<select class="dropDown buyDropDown" name="buyCurrency" id="buyCurrency" aria-label="click to select the currency you are buying">
 							<option value="CAD">Make a Selection</option>
 						</select>
 					</div>
-					<!-- BUYform result display -->
-					<h2>Result:</h2>
-					<p class="results">$$.$$</p>
+					<div class="flexRow">
+						<!-- BUYform result display -->
+						<h2>Result:</h2>
+						<p class="results">$$.$$</p>
+					</div>
 				</div>
 			</form>
 		</main>

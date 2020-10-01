@@ -279,7 +279,7 @@ a {
   left: 0;
   right: 0;
   z-index: 5;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   background-size: cover;
   background-repeat: no-repeat;
   display: -webkit-box;
@@ -319,8 +319,14 @@ a {
   margin: 0;
 }
 
+.modalContainer .modalCenter .modalAltText {
+  font-family: 'Major Mono Display', monospace;
+  font-weight: 200;
+}
+
 .modalContainer .modalCenter .start {
   background: black;
+  font-family: 'Major Mono Display', monospace;
   color: white;
   padding: 2% 8%;
   margin: 20px;
@@ -459,6 +465,7 @@ body {
   background: #565f61;
   position: relative;
   height: 100vh;
+  font-family: 'Major Mono Display', monospace;
 }
 
 main {
@@ -532,14 +539,29 @@ main h1 {
 .mainDisplay .sell .labelOneDiv .labelOne,
 .mainDisplay .buy .labelOneDiv .labelOne {
   color: white;
-  font-size: calc(1.6rem + 1vw);
-  text-shadow: #9e9e9e 1px 1px 2px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1% 5%;
-  border: 1px solid black;
-  border-radius: 8px;
+  font-size: calc(1.9rem + 1vw);
+  text-shadow: #bebebe 1px 1px 1px;
   text-align: center;
   display: inline-block;
+}
+
+.mainDisplay .sell .dropDown:focus,
+.mainDisplay .sell .dropDown:hover,
+.mainDisplay .buy .dropDown:focus,
+.mainDisplay .buy .dropDown:hover {
+  -webkit-box-shadow: 3px 3px 8px white;
+          box-shadow: 3px 3px 8px white;
+}
+
+.mainDisplay .sell .flexRow,
+.mainDisplay .buy .flexRow {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .mainDisplay .sell .selectDiv,
@@ -555,11 +577,11 @@ main h1 {
 .mainDisplay .sell .selectDiv select,
 .mainDisplay .buy .selectDiv select {
   outline: none;
-  border: 1px solid black;
+  border: white 1px solid;
   border-radius: 1px;
   padding: 2px 0;
   width: 90%;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Major Mono Display', monospace;
   margin: 8px;
   border-radius: 1px;
   text-align: center;
@@ -568,14 +590,13 @@ main h1 {
 .mainDisplay .sell .dollarValue,
 .mainDisplay .buy .dollarValue {
   color: rgba(92, 91, 91, 0.6);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Major Mono Display', monospace;
   text-transform: capitalize;
-  border: 1px black solid;
-  padding: 2px;
-  width: 30%;
-  height: 30px;
-  margin: 8px;
-  border-radius: 8px;
+  border: white 1px solid;
+  width: 40%;
+  height: 35px;
+  margin-top: 8px;
+  border-radius: 3px;
   text-align: center;
 }
 
@@ -583,7 +604,7 @@ main h1 {
 .mainDisplay .buy h2 {
   font-weight: 400;
   color: white;
-  text-shadow: black 2px 2px 3px;
+  text-shadow: black 2px 2px 8px;
   height: 30px;
   margin: 8px;
 }
@@ -593,10 +614,15 @@ main h1 {
   cursor: pointer;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  border-radius: 8px;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  font-family: 'Poppins', sans-serif;
+  border-radius: 3px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'Major Mono Display', monospace;
 }
 
 .mainDisplay .sell button.submitBtn:focus, .mainDisplay .sell button.submitBtn:hover,
@@ -618,10 +644,17 @@ main h1 {
   background: #a8a8a8;
   color: white;
   padding: 1% 12%;
-  border: 1px black solid;
-  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px white solid;
+  border-radius: 3px;
   font-size: 2rem;
   margin: 8px;
+  width: 40%;
 }
 
 footer {
