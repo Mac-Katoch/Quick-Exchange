@@ -143,27 +143,36 @@ quickExg.populateOptions = () => {
 	}).then((data) => {
 		// FIAT
 		const fiatCurrencies = data.fiat;
-		globalFiat = fiatCurrencies;
 
 		for (const key in fiatCurrencies) {
-			const fiatFullName = `${fiatCurrencies[key]} (${key})`;
 			const fiatSymbol = key;
-			quickExg.fiatNamesArray.push(`${fiatCurrencies[key]} (${key})`);
 
+			// build string value of name, sym
+			const fiatFullName = `${fiatCurrencies[key]} (${fiatSymbol})`;
+
+			// this is for the dropdown population
+			quickExg.fiatNamesArray.push(fiatFullName);
+
+			// this is for our conversion use
 			const refFiat = {
 				name: fiatFullName,
 				symbol: fiatSymbol,
 			};
+			// send these objects to the quickExg.symbol
 			quickExg.symbol.push(refFiat);
 		}
 
 		// CRYPTO
 		const cryptoCurrencies = data.crypto;
+
 		for (let key in cryptoCurrencies) {
 			// this gets us the individual currency objects
 			const item = cryptoCurrencies[key];
 			// for use in our display
 			const fullName = item.name_full;
+
+			// this is for the dropdown population
+			quickExg.cryptoNamesArray.push(fullName);
 
 			// this sends into our symbol array
 			const refCrypto = {
@@ -171,7 +180,6 @@ quickExg.populateOptions = () => {
 				symbol: item.symbol,
 			};
 			quickExg.symbol.push(refCrypto);
-			quickExg.cryptoNamesArray.push(fullName);
 		}
 
 		quickExg.buyDropDownMenu(quickExg.cryptoNamesArray);
@@ -203,21 +211,12 @@ quickExg.sellDropDownMenu = function () {
 };
 
 //populate dropdown with symbols from populateOptions
-quickExg.buyDropDownMenu = function (currencyArray) {
-	// console.log('This started!');
+quickExg.buyDropDownMenu = function () {
 	quickExg.cryptoNamesArray.forEach((currency) => {
 		const result = $(`<option value='${currency}'>`).text(currency);
 		quickExg.buyDropDown.append(result);
 	});
 };
-
-// // Creating function to get input from user and display converted amount
-// quickExg.displayAmt = () => {
-// 	quickExg.sell.on('submit', function (e) {
-// 		e.preventDefault();
-// 		// const sellValue = quickExg.dollarSell.val();
-// 	});
-// };
 
 //INIT FUNCTION
 quickExg.init = () => {

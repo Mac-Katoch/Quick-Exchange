@@ -5,7 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quick Exchange</title>
 		<!-- link fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,400&family=Major+Mono+Display&family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Courier+Prime&family=Major+Mono+Display&display=swap"
+			rel="stylesheet">
 		<!-- link favicon -->
 		<link type="image/ico" href="./favicon_io-6/favicon.ico" rel="icon">
 		<!-- link icons -->
@@ -34,14 +36,25 @@
 					<div class="labelOneDiv">
 						<label class="labelOne" for="sellCurrency" aria-label="click to select the currency you are selling">Currency You're Selling:</label>
 					</div>
+
+
 					<!-- SELLform dropdown switch -->
+					<!-- {# TODO switch to radio buttons w label -->
+					<!-- TODO fix layout for number overlay (ful width)  -->
+					<!-- TODO change font in dropdowns  -->
+					<!-- TODO height responsiveness? #} -->
+
+
 					<div class="changeDropDown">
-						<p class="fiatSwitch">National</p>
-						<label class="switch">
-							<input aria-label="click to change to national currencies" type="checkbox" class="sellCheckbox" checked>
-							<span class="slider"></span>
-						</label>
-						<p class="cryptoSwitch cryptoColor">Crypto</p>
+
+						<input aria-label="click to change to national currencies." type="radio" id="radio-fiat" name="switch" value="Fiat" checked>
+
+						<label for="radio-fiat" class="fiat">National</label>
+
+						<input aria-label="click to change to crypto currencies." type="radio" id="radio-crypto" name="switch" value="Crypto">
+
+						<label for="radio-crypto" class="crypto">Crypto</label>
+
 					</div>
 
 					<!-- SELLform dropdown menu -->
@@ -51,14 +64,12 @@
 						</select>
 					</div>
 					
-					<div class="flexRow">
 						<!-- SELLform userinput -->
-						<input class="dollarValue dollarSell" type="number" value="" placeholder="$$.$$" required></input>
+					<input class="dollarValue dollarSell" type="number" value="" placeholder="$$.$$" required></input>
 	
-						<!-- SELLform submit button -->
-						<button class="submitBtn" type="submit">Convert</button>
-						<!-- Exchange -->
-					</div>
+					<!-- SELLform submit button -->
+					<button class="submitBtn" type="submit">Convert</button>
+					<!-- Exchange -->
 				</div>
 
 				<!-- BUY SIDE -->
@@ -73,11 +84,9 @@
 							<option value="CAD">Make a Selection</option>
 						</select>
 					</div>
-					<div class="flexRow">
-						<!-- BUYform result display -->
-						<h2>Result:</h2>
-						<p class="results">$$.$$</p>
-					</div>
+						
+					<h2>Result:</h2>
+					<p class="results">$$.$$</p>
 				</div>
 			</form>
 		</main>

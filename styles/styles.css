@@ -355,71 +355,37 @@ a {
           align-items: center;
 }
 
-.changeDropDown p {
-  color: rgba(184, 183, 183, 0.8);
+.changeDropDown input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
 }
 
-.changeDropDown p.cryptoColor {
-  color: #2196f3;
-}
-
-.changeDropDown p.fiatColor {
-  color: #24b364;
-}
-
-.changeDropDown label.switch {
+.changeDropDown label {
   position: relative;
-  display: inline-block;
-  width: 48px;
-  height: 21px;
-  margin: auto 8px;
-  font-size: calc(1rem + 0.3vw);
+  margin: 8px auto;
+  padding: 5px 8px;
+  font-size: calc(1rem + 0.5vw);
+  border: 1px white solid;
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.changeDropDown label.switch .sellCheckbox {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.changeDropDown label.crypto {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
-.changeDropDown .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #24b364;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  border-radius: 50px;
+.changeDropDown label.fiat {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
-.slider:before {
-  position: absolute;
-  content: '';
-  height: 17px;
-  width: 17px;
-  left: 2px;
-  bottom: 2px;
-  border-radius: 50%;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
+input:checked + label {
   background-color: #2196f3;
-}
-
-input:focus + .slider {
-  -webkit-box-shadow: 0 0 1px #2196f3;
-          box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  transform: translateX(26px);
+  color: white;
 }
 
 /* Portrait tablet and small desktops */
@@ -581,7 +547,7 @@ main h1 {
   border-radius: 1px;
   padding: 2px 0;
   width: 90%;
-  font-family: 'Major Mono Display', monospace;
+  font-family: 'Anonymous Pro', monospace;
   margin: 8px;
   border-radius: 1px;
   text-align: center;
@@ -590,12 +556,12 @@ main h1 {
 .mainDisplay .sell .dollarValue,
 .mainDisplay .buy .dollarValue {
   color: rgba(92, 91, 91, 0.6);
-  font-family: 'Major Mono Display', monospace;
+  font-family: 'Anonymous Pro', monospace;
   text-transform: capitalize;
   border: white 1px solid;
   width: 40%;
   height: 35px;
-  margin-top: 8px;
+  margin: 8px;
   border-radius: 3px;
   text-align: center;
 }
@@ -638,6 +604,11 @@ main h1 {
 }
 
 .mainDisplay .sell p.results,
+.mainDisplay .buy p.results {
+  font-family: 'Anonymous Pro', monospace;
+}
+
+.mainDisplay .sell p.results,
 .mainDisplay .sell button.submitBtn,
 .mainDisplay .buy p.results,
 .mainDisplay .buy button.submitBtn {
@@ -659,10 +630,10 @@ main h1 {
 
 footer {
   background: black;
+  font-family: 'Anonymous Pro', monospace;
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
   padding: 5px 0;
-  border-top: 1px double rgba(0, 0, 0, 0.7);
   font-size: calc(1rem + 0.5vw);
 }
 
