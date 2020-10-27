@@ -13,16 +13,15 @@ quickExg.dollarSell = $('.dollarSell');
 quickExg.sellDropDown = $('.sellDropDown');
 quickExg.buyDropDown = $('.buyDropDown');
 
-quickExg.switchBox = $('.sellCheckbox');
-quickExg.fiatSwitch = $('.fiatSwitch');
-quickExg.cryptoSwitch = $('.cryptoSwitch');
-
 // holds objects of name, symbol
 quickExg.symbol = [];
 
 // holds array of long names
 quickExg.cryptoNamesArray = [];
 quickExg.fiatNamesArray = [];
+
+quickExg.cryptoSwitch = $("label.crypto")
+quickExg.fiatSwitch = $("label.fiat")
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
@@ -123,9 +122,10 @@ quickExg.getUserAmount = function () {
 	});
 };
 
-// Changing switch words styling
+// TODO Changing Button Color
 quickExg.switchColor = () => {
-	$('.sellCheckbox').on('change', () => {
+	$("input[name='switch']").on('change', () => {
+		console.log('clickkkkk');
 		quickExg.cryptoSwitch.toggleClass('cryptoColor');
 		quickExg.fiatSwitch.toggleClass('fiatColor');
 	});

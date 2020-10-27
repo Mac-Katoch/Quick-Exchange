@@ -15,7 +15,7 @@
 	label {
 		position: relative;
 		margin: 8px auto;
-		padding: 5px 8px;
+		padding: 5px 12px;
 		font-size: calc(1rem + 0.5vw);
 		border: 1px white solid;
 		background: rgba(255, 255, 255, 0.5);
@@ -27,14 +27,22 @@
 			border-top-left-radius: 50px; 
 			border-bottom-left-radius: 50px;
 		}
+		&.fiatColor {
+			background: $green;
+			color: white;
+		}
+		&.cryptoColor {
+			background: $blue;
+			color: white;
+		}
 	}
 }
 
 
-input:checked + label {
-	background-color: #2196f3;
-	color: white;
-}
+// input:checked + label {
+// 	background-color: #2196f3;
+// 	color: white;
+// }
 
 // input:focus + .slider {
 // 	box-shadow: 0 0 1px #2196f3;
