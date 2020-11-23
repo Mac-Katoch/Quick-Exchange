@@ -1,0 +1,128 @@
+
+body {
+	background: rgb(0, 0, 0);
+	position: relative;
+	height: 100vh;
+	font-family: 'Squared', sans-serif;
+}
+main {
+	h1 {
+		font-size: calc(7rem + 5vw);
+        text-align: center;
+        color: white;
+        z-index: 999;
+	}
+	height: calc(100% - 26.95px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+}
+
+.mainDisplay {
+	
+	font-family: 'Squared', sans-serif;
+    letter-spacing: 1.5px;
+    border-top: white 1px solid;
+    
+	.sell,
+	.buy {
+		padding: 60px 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		z-index: 3;
+        width: 100%;
+        border-radius: 5px;
+        background: transparent;
+		
+		.labelOneDiv {
+			.labelOne {
+				color: white;
+				font-size: calc(3rem + 1vw);
+				text-align: center;
+				display: inline-block;
+			}
+		}
+		.dropDown:focus,
+		.dropDown:hover {
+			box-shadow: 3px 3px 8px white;
+		}
+		.flex {
+            display: flex;
+            justify-content: center;
+        }
+		.selectDiv {
+			display: flex;
+            justify-content: center;
+            width: 100%;
+			select {
+				border: white 1px solid;
+				border-radius: 1px;
+				padding: 5px 0;
+				width: 100%;
+				font-family: 'Nugo', monospace;
+				margin: 8px;
+				border-radius: 1px;
+				text-align: center;
+			}
+		}
+		.dollarValue {
+			font-family: 'Nugo', monospace;
+			text-transform: capitalize;
+			border: white 1px solid;
+			width: 40%;
+			height: 35px;
+			margin: 8px;
+			border-radius: 3px;
+			text-align: center;
+		}
+		h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 100;
+            font-family: 'Nugo', monospace;
+            margin-top: 10px;
+		}
+		button.submitBtn {
+			cursor: pointer;
+			transition: all 0.4s;
+			border-radius: 3px;
+            height: 35px;
+            width: 150px;
+			display: flex;
+			justify-content: center;
+            font-family: 'Nugo', monospace;
+            letter-spacing: 1.5px;
+			&:focus,
+			&:hover {
+				background: #333;
+			}
+			&:active {
+				box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+			}
+		}
+		button.submitBtn,
+		p.results {
+			color: white;
+			font-size: 2rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 2px;
+			border: 1px white solid;
+		}
+		button.submitBtn {
+			background: #a8a8a8;
+			margin: 8px;
+		}
+		p.results {
+            font-family: 'Nugo', sans-serif;
+			background: rgba(255, 255, 255, 0.7);
+			height: 30px;
+			width: 60%;
+		}
+	}
+}
+

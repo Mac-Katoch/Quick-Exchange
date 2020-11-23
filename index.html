@@ -4,10 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quick Exchange</title>
-		<!-- link fonts -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Courier+Prime&family=Major+Mono+Display&display=swap"
-			rel="stylesheet">
+
 		<!-- link favicon -->
 		<link type="image/ico" href="./favicon_io-6/favicon.ico" rel="icon">
 		<!-- link icons -->
@@ -20,9 +17,8 @@
 
 		<div class="modalContainer">
 			<div class="modalCenter">
-				<p>the fastest way to see what you've got and better yet</p>
-				<p class="modalAltText">what you <i>could</i> have</p>
-				<button class="start">Start</button>
+				<p>easy crypto currency conversion</p>
+				<button class="start">Enter</button>
 			</div>
 		</div>
 
@@ -34,15 +30,8 @@
 				<div class="sell" id="sell">
 					<!-- SELLform title -->
 					<div class="labelOneDiv">
-						<label class="labelOne" for="sellCurrency" aria-label="click to select the currency you are selling">Currency You're Selling:</label>
+						<label class="labelOne" for="sellCurrency" aria-label="click to select the currency you are selling">Currency You're Selling</label>
 					</div>
-
-
-					<!-- SELLform dropdown switch -->
-					<!-- {# TODO switch to radio buttons w label -->
-					<!-- TODO fix layout for number overlay (ful width)  -->
-					<!-- TODO change font in dropdowns  -->
-					<!-- TODO height responsiveness? #} -->
 
 
 					<div class="changeDropDown">
@@ -64,18 +53,20 @@
 						</select>
 					</div>
 					
-						<!-- SELLform userinput -->
-					<input class="dollarValue dollarSell" type="number" value="" placeholder="$$.$$" required></input>
-	
-					<!-- SELLform submit button -->
-					<button class="submitBtn" type="submit">Convert</button>
+					<div class="flex">
+							<!-- SELLform userinput -->
+						<input class="dollarValue dollarSell" type="number" value="" placeholder="dollar amt" required></input>
+		
+						<!-- SELLform submit button -->
+						<button class="submitBtn" type="submit">Convert</button>
+					</div>
 					<!-- Exchange -->
 				</div>
 
 				<!-- BUY SIDE -->
 				<div class="buy">
 					<div class="labelOneDiv">
-						<label class="labelOne" for="buyCurrency">Crypto You're Buying:</label>
+						<label class="labelOne" for="buyCurrency">Crypto You're Buying</label>
 					</div>
 
 					<!-- BUYform title -->
@@ -85,14 +76,14 @@
 						</select>
 					</div>
 						
-					<h2>Result:</h2>
-					<p class="results">$$.$$</p>
+					<h2>Conversion</h2>
+					<p class="results"></p>
 				</div>
 			</form>
 		</main>
 
 		<footer>
-			copyrite &copy; <a class="bmac" href="http://www.brennamacquarrie.com/">Brenna MacQuarrie</a> & <a class="karan" href="https://twitter.com/katochwatch">Karan Katoch</a> for Juno College 2020
+			&copy; <a class="bmac" href="http://www.brennamacquarrie.com/">Brenna MacQuarrie</a> & <a class="karan" href="https://twitter.com/katochwatch">Karan Katoch</a> for Juno College 2020
 		</footer>
 
 		<!-- JQ -->

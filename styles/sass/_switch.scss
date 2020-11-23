@@ -3,7 +3,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
+	font-family: 'Nugo', sans-serif;
+	letter-spacing: 1.5px;
 	input {
 		position: absolute !important;
 		clip: rect(0, 0, 0, 0);
@@ -16,9 +17,10 @@
 		position: relative;
 		margin: 8px auto;
 		padding: 5px 12px;
-		font-size: calc(1rem + 0.5vw);
+		font-size: calc(0.8rem + 0.5vw);
 		border: 1px white solid;
-		background: rgba(255, 255, 255, 0.5);
+		background: black;
+		color: white;
 		&.crypto {
 			border-top-right-radius: 50px; 
 			border-bottom-right-radius: 50px;
@@ -39,17 +41,3 @@
 }
 
 
-// input:checked + label {
-// 	background-color: #2196f3;
-// 	color: white;
-// }
-
-// input:focus + .slider {
-// 	box-shadow: 0 0 1px #2196f3;
-// }
-
-// input:checked + .slider:before {
-// 	-webkit-transform: translateX(26px);
-// 	-ms-transform: translateX(26px);
-// 	transform: translateX(26px);
-// }

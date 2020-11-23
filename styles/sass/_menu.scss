@@ -5,12 +5,13 @@
     left: 0;
     right: 0;
     z-index: 5;
-    background: rgba(255, 255, 255, 0.95);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.596), rgba(255, 255, 255, 0.9)), url('../assets/pexels-gdtography-911738.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    
     .modalCenter {
         display: flex;
         flex-direction: column;
@@ -21,19 +22,15 @@
         font-weight: 600;
         text-align: center;
         line-height: 170%;
-        font-size: calc(1.5rem + 0.7vw);
-        p {
-            margin: 0;
-        }
-        .modalAltText {
-            font-family: 'Major Mono Display', monospace;
-            font-weight: 200;
-        }
+        font-size: calc(2rem + 0.7vw);
+        letter-spacing: 2px;
+        
         .start {
             background: black;
-            font-family: 'Major Mono Display', monospace;
+            font-family: 'Squared', sans-serif;
+            font-size: calc(2rem + 1vw);
             color: white;
-            padding: 2% 8%;
+            padding: 1% 5%;
             margin: 20px;
             border: none;
             border: 1px solid white;
