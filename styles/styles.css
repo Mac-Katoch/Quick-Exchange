@@ -408,8 +408,8 @@ main h1 {
 
 .mainDisplay .sell .labelOneDiv .labelOne,
 .mainDisplay .buy .labelOneDiv .labelOne {
-  color: white;
   font-size: calc(3rem + 1vw);
+  color: white;
   text-align: center;
   display: inline-block;
 }
@@ -511,7 +511,7 @@ main h1 {
 .mainDisplay .buy button.submitBtn,
 .mainDisplay .buy p.results {
   color: white;
-  font-size: 2rem;
+  font-size: 1.7rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -536,7 +536,7 @@ main h1 {
   font-family: 'Nugo', sans-serif;
   background: rgba(255, 255, 255, 0.7);
   height: 30px;
-  width: 60%;
+  width: 50%;
 }
 
 .changeDropDown {
