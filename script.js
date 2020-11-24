@@ -20,8 +20,9 @@ quickExg.symbol = [];
 quickExg.cryptoNamesArray = [];
 quickExg.fiatNamesArray = [];
 
-quickExg.cryptoSwitch = $("label.crypto")
-quickExg.fiatSwitch = $("label.fiat")
+quickExg.cryptoSwitch = $('label.crypto');
+quickExg.fiatSwitch = $('label.fiat');
+quickExg.selectedType = 'Fiat';
 
 // when user clicks start on modal, fade out
 quickExg.addStartButton = function () {
@@ -78,7 +79,7 @@ quickExg.getUserAmount = function () {
 		const sellSymbol = quickExg.symbolConverter(sellLongName);
 
 		if (buySymbol && sellSymbol) {
-			if ($('.sellCheckbox').is(':checked')) {
+			if (quickExg.selectedType === 'Crypto') {
 				// crypto to crypto conversion if checked
 				const rateBuy = await quickExg.ratesData(buySymbol);
 				const rateSell = await quickExg.ratesData(sellSymbol);
@@ -123,13 +124,13 @@ quickExg.getUserAmount = function () {
 };
 
 // TODO Changing Button Color
-quickExg.switchColor = () => {
-	$("input[name='switch']").on('change', () => {
-		console.log('clickkkkk');
-		quickExg.cryptoSwitch.toggleClass('cryptoColor');
-		quickExg.fiatSwitch.toggleClass('fiatColor');
-	});
-};
+// quickExg.switchColor = () => {
+// 	$("input[name='switch']").on('change', () => {
+// 		// console.log(quickExg.selectedType);
+// 		quickExg.cryptoSwitch.toggleClass('cryptoColor');
+// 		quickExg.fiatSwitch.toggleClass('fiatColor');
+// 	});
+// };
 
 //getting all currency objects and making an array out of the symbols
 quickExg.populateOptions = () => {
@@ -185,7 +186,7 @@ quickExg.populateOptions = () => {
 		quickExg.buyDropDownMenu(quickExg.cryptoNamesArray);
 
 		// makes default array crypto on left side.
-		quickExg.cryptoNamesArray.forEach((currency) => {
+		quickExg.fiatNamesArray.forEach((currency) => {
 			const result = $(`<option value='${currency}'>`).text(currency);
 			quickExg.sellDropDown.append(result);
 		});
@@ -194,9 +195,18 @@ quickExg.populateOptions = () => {
 
 //populate dropdown with symbols from populateOptions
 quickExg.sellDropDownMenu = function () {
-	$('.sellCheckbox').on('change', function () {
+	$("input[name='switch']").on('change', function () {
+		// getting value of radio button checked
+		quickExg.selectedType = $("input[name='switch']:checked").val();
+		// changing color based on whether crypto or fiat is selected
+		quickExg.cryptoSwitch.toggleClass('cryptoColor');
+		quickExg.fiatSwitch.toggleClass('fiatColor');
+
+		// clearing amount value
+		quickExg.dollarSell.value = '';
+
 		quickExg.sellDropDown.empty();
-		if ($(this).is(':checked')) {
+		if (quickExg.selectedType === 'Crypto') {
 			quickExg.cryptoNamesArray.forEach((currency) => {
 				const result = $(`<option value='${currency}'>`).text(currency);
 				quickExg.sellDropDown.append(result);
@@ -220,12 +230,14 @@ quickExg.buyDropDownMenu = function () {
 
 //INIT FUNCTION
 quickExg.init = () => {
+	// clearing amount value
+	quickExg.dollarSell.val('');
 	quickExg.addStartButton();
 	quickExg.sellDropDownMenu();
 	quickExg.populateOptions();
 	// quickExg.displayAmt();
 	quickExg.getUserAmount();
-	quickExg.switchColor();
+	// quickExg.switchColor();
 };
 
 //DOCUMENT READY FUNCTION

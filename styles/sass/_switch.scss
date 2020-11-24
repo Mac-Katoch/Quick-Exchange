@@ -1,4 +1,3 @@
-
 .changeDropDown {
 	display: flex;
 	justify-content: center;
@@ -14,6 +13,7 @@
 		overflow: hidden;
 	}
 	label {
+		cursor: pointer;
 		position: relative;
 		margin: 8px auto;
 		padding: 5px 12px;
@@ -22,11 +22,11 @@
 		background: black;
 		color: white;
 		&.crypto {
-			border-top-right-radius: 50px; 
+			border-top-right-radius: 50px;
 			border-bottom-right-radius: 50px;
 		}
 		&.fiat {
-			border-top-left-radius: 50px; 
+			border-top-left-radius: 50px;
 			border-bottom-left-radius: 50px;
 		}
 		&.fiatColor {
@@ -39,5 +39,3 @@
 		}
 	}
 }
-
-
