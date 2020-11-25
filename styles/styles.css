@@ -369,6 +369,7 @@ a {
   color: white;
   padding: 1% 5%;
   margin: 20px;
+  margin-top: 15%;
   border: none;
   border: 1px solid white;
   border-radius: 5px;
@@ -385,12 +386,13 @@ a {
 body {
   background: black;
   position: relative;
-  height: 100vh;
+  padding-top: 15%;
   font-family: 'Squared', sans-serif;
+  overflow-y: scroll;
 }
 
 main {
-  height: calc(100% - 26.95px);
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -411,6 +413,7 @@ main h1 {
   text-align: center;
   color: white;
   z-index: 999;
+  line-height: 70%;
 }
 
 .mainDisplay {
@@ -644,38 +647,16 @@ footer .karan {
   color: rgba(113, 255, 137, 0.6);
 }
 
-/* Portrait tablet and small desktops */
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
   body {
-    overflow-y: visible;
     height: 100%;
-  }
-  body main {
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
   }
   body .mainDisplay {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    padding: 20px 0;
-    margin: 8% auto;
+    margin: 10% auto;
   }
   body .mainDisplay .sell,
   body .mainDisplay .buy {
-    width: 100%;
-    height: 100%;
     margin: 20px auto;
     padding: 20px 0;
     font-size: calc(1.3rem + 0.7vw);
@@ -683,3 +664,8 @@ footer .karan {
 }
 
 /* Landscape phones and down */
+@media (max-width: 480px) {
+  p.results {
+    overflow-x: scroll;
+  }
+}

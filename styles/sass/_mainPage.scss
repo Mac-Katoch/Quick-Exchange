@@ -1,8 +1,10 @@
 body {
 	background: rgb(0, 0, 0);
 	position: relative;
-	height: 100vh;
+	// height: 100vh;
+	padding-top: 15%;
 	font-family: 'Squared', sans-serif;
+	overflow-y: scroll;
 }
 main {
 	h1 {
@@ -10,8 +12,9 @@ main {
 		text-align: center;
 		color: white;
 		z-index: 999;
+		line-height: 70%;
 	}
-	height: calc(100% - 26.95px);
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
